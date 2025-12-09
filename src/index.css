@@ -1,0 +1,45 @@
+:root{
+  --main-color:rgba( 109,  9 , 51 , 0.966) ;
+}
+@import "tailwindcss";
+@theme{
+  --color-main-color: var(--main-color);
+  --color-second-color: rgb(212, 212, 212);
+  --radius-main-radius:0.2rem; 
+  --color-hover-color:rgba(255, 255, 255, 0.075) ;
+}
+li{
+ list-style-type: none;
+}
+body{
+   background-color: rgb(221 , 220 , 218);
+}
+::-webkit-scrollbar {
+  width: 0.9rem;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color) ;
+}
+.main-font{
+  font-family: "Playwrite NZ Guides", cursive;
+  font-style: normal;
+}
+.second-font{
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:300;
+  font-style: normal;
+}
+.main-shadow{
+ box-shadow: 0.1px 0.2px 0.5px 0.1px #222 ;
+}
+.background-details{
+  background-color: rgba(22, 16, 18, 0.151);
+}
+.background-cart{
+  background-color: rgba(240, 240, 240, 0.623);
+}
+i , button {
+ cursor: pointer; 
+}
+
