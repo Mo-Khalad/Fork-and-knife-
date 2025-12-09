@@ -1,0 +1,25 @@
+.swiper {
+  width: 100% !important;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: start !important;
+  cursor:pointer !important;
+}
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px !important;
+  height: 300px;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+.swiper-pagination-bullet-active{
+  background-color: var(--main-color) !important;
+}
+.swiper-button-prev ,.swiper-button-next{
+  color: var(--main-color) !important;
+  cursor:pointer !important;
+}
