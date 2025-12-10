@@ -25,7 +25,7 @@ export const DisplayMeals = () => {
 
           <span className="ms-1 text-2xl"> 28$ </span>
         </div>
-      </div>{" "}
+      </div>
       <div className="bg-second-color main-shadow rounded-main-radius min-90 mt-5 sm:mt-0">
         <img src={pizza} alt="pizza" className="min-h-50" />
 
@@ -46,7 +46,7 @@ export const DisplayMeals = () => {
 
           <span className="ms-1 text-2xl"> 28$ </span>
         </div>
-      </div>{" "}
+      </div>
       <div className="bg-second-color main-shadow rounded-main-radius min-90 mt-5 sm:mt-0">
         <img src={pizza} alt="pizza" className="min-h-50" />
 
@@ -67,7 +67,7 @@ export const DisplayMeals = () => {
 
           <span className="ms-1 text-2xl"> 28$ </span>
         </div>
-      </div>{" "}
+      </div>
       <div className="bg-second-color main-shadow rounded-main-radius min-90 mt-5 sm:mt-0">
         <img src={pizza} alt="pizza" className="min-h-50" />
 

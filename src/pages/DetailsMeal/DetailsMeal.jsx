@@ -6,7 +6,7 @@ import pizza from "../../assets/images/pizza.avif";
 export const DetailsMeal = () => {
   return (
     <>
-      <div className="grid grid-cols-8 p-5 gap-20 lg:h-120">
+      <div className="grid grid-cols-8 p-5 lg:h-120 w-full">
         <div className="col-span-7 lg:col-span-4 mt-15">
           <img src={img} alt="img" className="place-self-center" />
         </div>
@@ -34,7 +34,7 @@ export const DetailsMeal = () => {
         </div>
       </div>
 
-      <h2 className="grid col-span-7 text-2xl md:text-4xl font-bold main-font text-main-color my-20 text-center">
+      <h2 className="grid col-span-8 text-2xl md:text-4xl font-bold main-font text-main-color my-20 text-center">
         Other meals of the same type
       </h2>
 
