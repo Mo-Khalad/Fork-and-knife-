@@ -7,11 +7,11 @@ export const DetailsMeal = () => {
   return (
     <>
       <div className="grid grid-cols-8 p-5 lg:h-120 w-full">
-        <div className="col-span-7 lg:col-span-4 mt-15">
+        <div className="col-span-8 lg:col-span-4 mt-15">
           <img src={img} alt="img" className="place-self-center" />
         </div>
 
-        <div className="p-4 col-span-7 lg:col-span-4 ">
+        <div className="p-4 col-span-8 lg:col-span-4 ">
           <h1 className="text-4xl font-bold main-font text-main-color mt-5 text-center mb-15">
             Pizza
           </h1>
