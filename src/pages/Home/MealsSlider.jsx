@@ -13,7 +13,7 @@ import { sliderImages } from "./information";
 
 export const MealsSlider = () => {
   return (
-    <div className="bg-second-color main-shadow shadow-main-color">
+    <div className="bg-meals-slider p-5 main-shadow shadow-main-color">
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
@@ -26,7 +26,7 @@ export const MealsSlider = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={true}
+        pagination={false}
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
