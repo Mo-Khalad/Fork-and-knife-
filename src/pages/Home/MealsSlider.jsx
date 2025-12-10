@@ -1,27 +1,26 @@
-import React from 'react'
-import pizza from '../../assets/images/pizza.avif'
+import React from "react";
 // Import Swiper React components
- import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
- // Import Swiper styles
- import 'swiper/css';
- import 'swiper/css/effect-coverflow';
- import 'swiper/css/pagination';
- 
- import './styles.css';
- 
- // import required modules
- import { EffectCoverflow, Pagination } from 'swiper/modules';
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
+import "./styles.css";
+
+// import required modules
+import { EffectCoverflow, Pagination } from "swiper/modules";
+import { sliderImages } from "./information";
 
 export const MealsSlider = () => {
- 
   return (
-    <div className='bg-second-color main-shadow shadow-main-color'>
+    <div className="bg-second-color main-shadow shadow-main-color">
       <Swiper
-        effect={'coverflow'}
+        effect={"coverflow"}
         grabCursor={true}
         centeredSlides={false}
-        slidesPerView={'auto'}
+        slidesPerView={"auto"}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -33,36 +32,14 @@ export const MealsSlider = () => {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src={pizza} alt='pizza' className="h-full" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={pizza} alt='pizza' className="h-full" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={pizza} alt='pizza' className="h-full" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={pizza} alt='pizza' className="h-full" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={pizza} alt='pizza' className="h-full" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={pizza} alt='pizza' className="h-full" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={pizza} alt='pizza' className="h-full" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={pizza} alt='pizza' className="h-full" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={pizza} alt='pizza' className="h-full" />
-        </SwiperSlide>
+        {sliderImages.map(({ image }, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <img src={image} alt="pizza" className="h-full" />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
-
- }
-   
+};

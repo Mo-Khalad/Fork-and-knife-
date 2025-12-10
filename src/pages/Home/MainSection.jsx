@@ -1,6 +1,5 @@
 import React from 'react'
 import chef from "../../assets/images/chicken.png";
-
 export const MainSection = () => {
   return (
     <div className="mt-10 grid ">

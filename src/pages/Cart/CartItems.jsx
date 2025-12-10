@@ -1,4 +1,5 @@
 import React from "react";
+import { ButtonMain } from "../../Components/Ui/ButtonMain";
 
 export const CartItems = () => {
   return (
@@ -29,10 +30,7 @@ export const CartItems = () => {
             <i className="fa-solid fa-minus text-main-color hover:p-1"></i>
           </li>
         </ul>
-
-        <button className="bg-main-color text-second-color px-10 py-2 rounded-main-radius cursor-pointer border-b-fuchsia-950 hover:text-main-color  hover:bg-neutral-400 transition duration-700">
-          remove
-        </button>
+        <ButtonMain>remove</ButtonMain>
       </div>
     </div>
   );

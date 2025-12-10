@@ -1,6 +1,7 @@
 import React from "react";
 import { CartItems } from "./CartItems";
 import { Link } from "react-router-dom";
+import { ButtonMain } from "../../Components/Ui/ButtonMain";
 export const Cart = () => {
   return (
     <div className="lg:h-lvh m-auto grid place-items-center mt-10">
@@ -16,9 +17,7 @@ export const Cart = () => {
             <CartItems />
             <CartItems />
           </div>
-          <button className="my-3 text-1xl bg-main-color text-second-color px-10 py-2 rounded-main-radius cursor-pointer border-b-fuchsia-950 hover:text-main-color  hover:bg-neutral-400 transition duration-700">
-            clear
-          </button>
+          <ButtonMain className={'m-2'}>clear</ButtonMain>
         </div>
 
         <div className="grid col-end-9 col-span-6 lg:col-span-2 background-cart mb-15 mt-10 p-2 md:h-38 lg:col-end-10">
