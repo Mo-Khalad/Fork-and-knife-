@@ -3,7 +3,7 @@ import { Home } from "./pages/Home/Home.jsx";
 import "@fortawesome/fontawesome-free/css/all.min.css"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { About } from "./pages/About/About.jsx";
-import { Menu } from "./pages/menu/menu.jsx";
+import { Menu } from "./pages/menu/Menu.jsx";
 import { CheckOut } from "./pages/CheckOut/CheckOut.jsx";
 import { Cart } from "./pages/Cart/Cart.jsx";
 import { DetailsMeal } from "./pages/DetailsMeal/DetailsMeal.jsx";
