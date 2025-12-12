@@ -2,7 +2,10 @@ import React from "react";
 import { CartItems } from "./CartItems";
 import { Link } from "react-router-dom";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
+import { cartContext } from "../../Store/cartContext";
 export const Cart = () => {
+  const {removeAllItemsToCartHandler} = cartContext()
+
   return (
     <div className="lg:h-lvh m-auto grid place-items-center mt-10">
       <div className="container grid grid-cols-9 gap-3">
@@ -17,7 +20,7 @@ export const Cart = () => {
             <CartItems />
             <CartItems />
           </div>
-          <ButtonMain className={'m-2'}>clear</ButtonMain>
+          <ButtonMain onClick={removeAllItemsToCartHandler} className={'m-2'}>clear</ButtonMain>
         </div>
 
         <div className="grid col-end-9 col-span-6 lg:col-span-2 background-cart mb-15 mt-10 p-2 md:h-38 lg:col-end-10">

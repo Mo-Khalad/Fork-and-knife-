@@ -10,7 +10,7 @@ import { DetailsMeal } from "./pages/DetailsMeal/DetailsMeal.jsx";
 import { Contact } from "./pages/Contact/Contact.jsx";
 import { LayOut } from "./Components/LayOut/LayOut.jsx";
 
-export const App = () => {
+export const App = () => {  
   const routes = createBrowserRouter([
     {
       path: "",
@@ -28,5 +28,5 @@ export const App = () => {
   ]);
 
   return <RouterProvider router={routes}></RouterProvider>;
-};
+  };
 export default App;

@@ -2,6 +2,7 @@ import React from "react";
 import { informationChefs } from "./information";
 
 export const Chefs = () => {
+ 
   return (
     <>
       <div className={`w-full gird place-content-center`}>
