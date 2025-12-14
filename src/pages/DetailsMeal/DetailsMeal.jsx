@@ -2,8 +2,14 @@ import React from "react";
 import img from "../../assets/images/October.webp";
 import { Link } from "react-router-dom";
 import pizza from "../../assets/images/pizza.avif";
+import successfullyDone from "../../Logic/successfullyDone";
+import { ButtonMain } from "../../Components/Ui/ButtonMain";
+//import { cartContext } from "../../Store/CartContext";
+import { ToastContainer } from "react-toastify";
 
 export const DetailsMeal = () => {
+//const { addItemToCartHandler } = cartContext()
+
   return (
     <>
       <div className="grid grid-cols-8 p-5 lg:h-120 w-full">
@@ -24,13 +30,12 @@ export const DetailsMeal = () => {
             laboriosam in corrupti, id debitis hic quisquam eligendi aspernatur
             incidunt quae.
           </p>
-
-          <Link
-            to={"../../cart"}
-            className="bg-main-color text-second-color px-10 py-2 rounded-main-radius cursor-pointer border-b-fuchsia-950 hover:text-main-color  hover:bg-neutral-400 transition duration-700"
+          <ButtonMain
+            className={"w-40"} 
+            //onClick={()=>( addItemToCartHandler('successfully added in cart'))}
           >
             add to cart
-          </Link>
+          </ButtonMain>
         </div>
       </div>
 
@@ -48,11 +53,12 @@ export const DetailsMeal = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur,
               sed.
             </p>
-            <Link to={"../../DetailsMeal"}>
-              <button className="bg-main-color text-second-color px-7 py-2 rounded-main-radius cursor-pointer hover:bg-second-color border-2 border-b-fuchsia-950 hover:text-main-color transition duration-700">
-                add to cart
-              </button>
-            </Link>
+            <ButtonMain
+            className={"w-40"} 
+            onClick={()=> successfullyDone("successfully added in cart")} 
+          >
+            add to cart
+          </ButtonMain>
             <span className="ms-1 text-2xl"> 28$ </span>
           </div>
         </div>
@@ -111,6 +117,8 @@ export const DetailsMeal = () => {
           </div>
         </div>
       </div>
+
+      <ToastContainer/>
     </>
   );
 };

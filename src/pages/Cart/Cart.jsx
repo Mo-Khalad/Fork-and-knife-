@@ -3,10 +3,12 @@ import { CartItems } from "./CartItems";
 import { Link } from "react-router-dom";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
 import { cartContext } from "../../Store/cartContext";
+import { ToastContainer } from "react-toastify";
 export const Cart = () => {
-  const {removeAllItemsToCartHandler} = cartContext()
+  const { removeAllItemsToCartHandler } = cartContext()
 
   return (
+    <>
     <div className="lg:h-lvh m-auto grid place-items-center mt-10">
       <div className="container grid grid-cols-9 gap-3">
         <div className="grid col-span-9 lg:col-span-6 h-130 background-cart p-2 ">
@@ -37,6 +39,9 @@ export const Cart = () => {
           </Link>
         </div>
       </div>
+      <ToastContainer/>
     </div>
+    </>
   );
 };
+

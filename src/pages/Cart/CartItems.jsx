@@ -1,10 +1,12 @@
 import React from "react";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
 import { cartContext } from "../../Store/cartContext";
-
+//import successfullyDone from "../../Logic/successfullyDone";
 export const CartItems = () => {
+
  const { addItemToCartHandler , cartMeals , removeItemToCartHandler} = cartContext();
- const meal = {id:1 , name:"mohmed"}
+ const meal = { id:1 , name:"mohmed" }
+ 
   return (
     <div className=" w-3xl rounded-main-radius grid grid-cols-8 p-1 mb-2 bg-second-color">
       <div className="grid grid-cols-2 col-span-2 m-2">
@@ -26,9 +28,9 @@ export const CartItems = () => {
       <div className=" col-span-2 col-end-9 w-1xl grid place-content-center">
         <ul className="bg-pink-100 opacity-100 py-2 w-33 px-4 grid grid-cols-3 gap-2 mb-3">
           <li>
-            <i onClick={ ()=>addItemToCartHandler(meal)} className="fa-solid fa-plus text-main-color hover:p-1"></i>
+            <i onClick={ ()=>addItemToCartHandler(meal , "successfully added in cart")} className="fa-solid fa-plus text-main-color hover:p-1"></i>
           </li>
-          <li className="ms-2 text-main-color">{cartMeals[0]?.quantity}</li>
+          <li className="text-center text-main-color"> { cartMeals[0]?.quantity }</li>
           <li>
             <i onClick={()=>removeItemToCartHandler(meal)} className="fa-solid fa-minus text-main-color hover:p-1"></i>
           </li>

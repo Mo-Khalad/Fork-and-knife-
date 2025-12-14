@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useState  } from "react";
 import { MenuSearchMeals } from "./MenuSearchMeals";
 import { mealsNames } from "./mealsNames";
 import { DisplayMeals } from "./DisplayMeals";
-
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { fetchMeals } from "../../util/Http";
 export const Menu = () => {
   const [meal, setMeal] = useState(mealsNames);
+  const [searchMealName, setSearchMealName] = useState('');
+  
+  const { data } = useQuery({
+    queryKey: ["meal"],
+    queryFn: () => fetchMeals({ mealName: 'pizza' , method: "get_meals" }),
+  });
 
+  const { data: searchData, mutate } = useMutation({
+    mutationFn: fetchMeals,
+  });
+  
+  const mealsData = (searchData === undefined && searchMealName ==='' )? data?.data.recipes : searchData?.data.recipes;
+ 
   const handleSearch = (event) => {
     setMeal(event.target.value);
     const mealSearch = mealsNames.filter((meal) =>
@@ -34,7 +47,12 @@ export const Menu = () => {
               <li className="mt-10 font-bold"> Meal not available </li>
             ) : (
               meal.map((mealName, index) => (
-                <MenuSearchMeals mealName={mealName} key={index} />
+                <MenuSearchMeals
+                  mealName={mealName}
+                  key={index}
+                  mutate={mutate}
+                  setSearchMealName={setSearchMealName}
+                />
               ))
             )}
           </ul>
@@ -42,10 +60,13 @@ export const Menu = () => {
 
         <div className="grid col-span-6 sm:col-span-7 md:col-span-7 lg:col-span-8 mt-5">
           <h2 className="text-center text-5xl text-main-color main-font mb-20">
-            Pizza
+            { searchMealName }
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-6  p-2 background-details">
-            <DisplayMeals />
+            { mealsData !== undefined &&
+              mealsData.map((mealData) => (
+                <DisplayMeals mealData={mealData} key={mealData.recipe_id} />               
+              ))}
           </div>
         </div>
       </div>
