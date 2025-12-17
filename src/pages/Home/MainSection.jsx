@@ -1,5 +1,5 @@
 import React from 'react'
-import chef from "../../assets/images/chicken.png";
+//import chef from "../../assets/images/chicken.png";
 export const MainSection = () => {
   return (
     <div className="mt-10 grid ">
@@ -12,7 +12,7 @@ export const MainSection = () => {
         </div>
 
         <div className="grid col-span-2 md:col-span-1">
-          <img src={chef} alt="chef"/>
+          <img src='/chicken.webp' alt="chef"/>
         </div>
     </div>
   </div>

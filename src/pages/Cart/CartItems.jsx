@@ -3,40 +3,61 @@ import { ButtonMain } from "../../Components/Ui/ButtonMain";
 import { cartContext } from "../../Store/cartContext";
 //import successfullyDone from "../../Logic/successfullyDone";
 export const CartItems = () => {
+  const {
+    addItemToCartHandler,
+    decrementItemToCartHandler,
+    cartMeals,
+    removeItemToCartHandler,
+  } = cartContext();
 
- const { addItemToCartHandler , cartMeals , removeItemToCartHandler} = cartContext();
- const meal = { id:1 , name:"mohmed" }
- 
   return (
-    <div className=" w-3xl rounded-main-radius grid grid-cols-8 p-1 mb-2 bg-second-color">
-      <div className="grid grid-cols-2 col-span-2 m-2">
-        <ul>
-          <li>
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg" width={90}
-            />
-          </li>
-        </ul>
-        <ul>
-          <li className="mt-4 ms-4 text-2xl font-black text-main-color second-font">
-            pizza
-          </li>
-          <li className="mt-1 ms-4 text-2xl font-bold text-main-color second-font">
-            50$
-          </li>
-        </ul>
-      </div>
-      <div className=" col-span-2 col-end-9 w-1xl grid place-content-center">
-        <ul className="bg-pink-100 opacity-100 py-2 w-33 px-4 grid grid-cols-3 gap-2 mb-3">
-          <li>
-            <i onClick={ ()=>addItemToCartHandler(meal , "successfully added in cart")} className="fa-solid fa-plus text-main-color hover:p-1"></i>
-          </li>
-          <li className="text-center text-main-color"> { cartMeals[0]?.quantity }</li>
-          <li>
-            <i onClick={()=>removeItemToCartHandler(meal)} className="fa-solid fa-minus text-main-color hover:p-1"></i>
-          </li>
-        </ul>
-        <ButtonMain>remove</ButtonMain>
-    </div>
-    </div>
+    <>
+      {cartMeals.map((cartMeal) => {
+        return (
+          <div
+            key={cartMeal.recipe_id}
+            className=" w-3xl rounded-main-radius grid grid-cols-8 p-1 m-2 bg-second-color"
+          >
+            <div className="grid grid-cols-5 col-span-6 m-3">
+              <div>
+                <img
+                  src={cartMeal.image_url}
+                  alt={cartMeal.title}
+                  className="h-20 w-22 mt-2"
+                />
+              </div>
+
+              <div className="grid col-span-4 mt-4">
+                <h3>50$</h3>
+                <h3>{cartMeal.title}</h3>
+              </div>
+            </div>
+
+            <div className=" col-span-2 col-end-9 w-1xl grid place-content-center">
+              <ul className="bg-pink-100 opacity-100 py-2 w-33 px-4 grid grid-cols-3 gap-2 mb-3">
+                <li>
+                  <i
+                    onClick={() => addItemToCartHandler(cartMeal)}
+                    className="fa-solid fa-plus text-main-color hover:p-1"
+                  ></i>
+                </li>
+                <li className="text-center text-main-color">
+                  {cartMeal.quantity}
+                </li>
+                <li>
+                  <i
+                    onClick={() => decrementItemToCartHandler(cartMeal)}
+                    className="fa-solid fa-minus text-main-color hover:p-1"
+                  ></i>
+                </li>
+              </ul>
+              <ButtonMain onClick={() => removeItemToCartHandler(cartMeal)}>
+                remove
+              </ButtonMain>
+            </div>
+          </div>
+        );
+      })}
+    </>
   );
 };

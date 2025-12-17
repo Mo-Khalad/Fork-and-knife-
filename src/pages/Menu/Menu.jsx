@@ -1,32 +1,27 @@
-import React, { useState  } from "react";
-import { MenuSearchMeals } from "./MenuSearchMeals";
+import React, { useState } from "react";
 import { mealsNames } from "./mealsNames";
 import { DisplayMeals } from "./DisplayMeals";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { fetchMeals } from "../../util/Http";
+import { DataShareContext } from "../../Store/DataShareContext";
 export const Menu = () => {
   const [meal, setMeal] = useState(mealsNames);
-  const [searchMealName, setSearchMealName] = useState('');
-  
+  const { handleDataShare, dataShare } = DataShareContext();
+
   const { data } = useQuery({
-    queryKey: ["meal"],
-    queryFn: () => fetchMeals({ mealName: 'pizza' , method: "get_meals" }),
+    queryKey: ["meal", dataShare],
+    queryFn: () => fetchMeals({ mealName: dataShare, method: "get_meals" }),
+    staleTime: Infinity,
+    gcTime: Infinity,
+    enabled: !!dataShare,
   });
 
-  const { data: searchData, mutate } = useMutation({
-    mutationFn: fetchMeals,
-  });
-  
-  const mealsData = (searchData === undefined && searchMealName ==='' )? data?.data.recipes : searchData?.data.recipes;
- 
   const handleSearch = (event) => {
-    setMeal(event.target.value);
     const mealSearch = mealsNames.filter((meal) =>
       meal.toLowerCase().includes(event.target.value.toLowerCase())
     );
     setMeal(mealSearch);
   };
-
   return (
     <div className="p-1 mb-3">
       <div className=" grid grid-cols-10 ">
@@ -47,12 +42,16 @@ export const Menu = () => {
               <li className="mt-10 font-bold"> Meal not available </li>
             ) : (
               meal.map((mealName, index) => (
-                <MenuSearchMeals
-                  mealName={mealName}
+                <li
                   key={index}
-                  mutate={mutate}
-                  setSearchMealName={setSearchMealName}
-                />
+                  onClick={() => {
+                    handleDataShare(mealName);
+                    setMeal(mealsNames);
+                  }}
+                  className="m-3 cursor-pointer hover:bg-hover-color transition duration-700"
+                >
+                  {mealName}
+                </li>
               ))
             )}
           </ul>
@@ -60,12 +59,12 @@ export const Menu = () => {
 
         <div className="grid col-span-6 sm:col-span-7 md:col-span-7 lg:col-span-8 mt-5">
           <h2 className="text-center text-5xl text-main-color main-font mb-20">
-            { searchMealName }
+            {dataShare}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-6  p-2 background-details">
-            { mealsData !== undefined &&
-              mealsData.map((mealData) => (
-                <DisplayMeals mealData={mealData} key={mealData.recipe_id} />               
+            {data !== undefined &&
+              data?.data?.recipes.map((mealData) => (
+                <DisplayMeals mealData={mealData} key={mealData.recipe_id} />
               ))}
           </div>
         </div>

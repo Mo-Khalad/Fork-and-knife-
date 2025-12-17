@@ -17,12 +17,8 @@ export const Cart = () => {
           </h2>
           <div className="grid place-items-center gap-3 overflow-y-scroll">
             <CartItems />
-            <CartItems />
-            <CartItems />
-            <CartItems />
-            <CartItems />
           </div>
-          <ButtonMain onClick={removeAllItemsToCartHandler} className={'m-2'}>clear</ButtonMain>
+          <ButtonMain onClick={removeAllItemsToCartHandler} className={'m-2 h-10'}>clear</ButtonMain>
         </div>
 
         <div className="grid col-end-9 col-span-6 lg:col-span-2 background-cart mb-15 mt-10 p-2 md:h-38 lg:col-end-10">

@@ -1,6 +1,7 @@
 import React from "react";
 import img from "../../assets/images/October.webp";
 export const About = () => {
+
   return (
     <div className="grid grid-cols-7 grid-rows-2 p-5 gap-1">
       <div className="grid col-span-7 md:col-span-7 lg:col-span-3 mt-5">
