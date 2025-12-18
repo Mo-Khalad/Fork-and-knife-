@@ -1,7 +1,10 @@
 :root{
   --main-color:rgba( 109,  9 , 51 , 0.966) ;
 }
-
+.leaflet-container{
+  width: 100%;
+  height: 80vh ;
+}
 @import "tailwindcss";
 @theme{
   --color-main-color: var(--main-color);
