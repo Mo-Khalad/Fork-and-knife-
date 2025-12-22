@@ -1,19 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
+import "leaflet/dist/leaflet.css";
+import { Map } from "../../Components/Map";
+import { PickLocation } from "../../Components/PickLocation";
+import { LeafletGeocoder } from "./LeafletGeocoder";
+import { MapContainer, TileLayer } from "react-leaflet";
 
 export const CheckOut = () => {
+  const [pickLocation, setPickLocation] = useState({
+    lat: '',
+    lng: '',
+  });
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          setPickLocation({
+            lat: latitude ,
+            lng: longitude,
+          });
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
+    }
+  , []);
+
   return (
-    <diV className="w-full">
+    <div className="w-full">
       <div className="container p-15">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-4xl main-font text-main-color text-center">
             Check Out
           </h2>
 
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="col-span-full mt-4">
+            <h2 className="font-bold text-2xl text-gray-900 ">
+              Street address
+            </h2>
+            <p>
+              lat :{pickLocation?.lat !== '' ? pickLocation?.lat : 30.0444}
+            </p>
+            <p>
+              lng :{pickLocation?.lng !== '' ? pickLocation?.lng : 31.2357}
+            </p>
+          </div>
+
+          <div className="col-span-full gap-10">
+            <Map position={[pickLocation?.lat , pickLocation?.lng]}>
+              <PickLocation
+                setPickLocation={setPickLocation}
+                pickLocation={pickLocation}
+              />
+              <LeafletGeocoder setPickLocation={setPickLocation} />
+            </Map>
+          </div>
+
+          <form className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
               <label
-                for="first-name"
+                htmlFor="first-name"
                 className="block text-sm/6 font-medium text-gray-900"
               >
                 First name
@@ -23,14 +73,13 @@ export const CheckOut = () => {
                   id="first-name"
                   type="text"
                   name="first-name"
-                  autocomplete="given-name"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
                 />
               </div>
             </div>
             <div className="sm:col-span-3">
               <label
-                for="last-name"
+                htmlFor="last-name"
                 className="block text-sm/6 font-medium text-gray-900"
               >
                 Last name
@@ -40,14 +89,13 @@ export const CheckOut = () => {
                   id="last-name"
                   type="text"
                   name="last-name"
-                  autocomplete="family-name"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
                 />
               </div>
             </div>
             <div className="sm:col-span-4">
               <label
-                for="email"
+                htmlFor="email"
                 className="block text-sm/6 font-medium text-gray-900"
               >
                 Email address
@@ -57,14 +105,13 @@ export const CheckOut = () => {
                   id="email"
                   type="email"
                   name="email"
-                  autocomplete="email"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
                 />
               </div>
             </div>
             <div className="sm:col-span-3">
               <label
-                for="country"
+                htmlFor="country"
                 className="block text-sm/6 font-medium text-gray-900"
               >
                 Country
@@ -73,7 +120,6 @@ export const CheckOut = () => {
                 <select
                   id="country"
                   name="country"
-                  autocomplete="country-name"
                   className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
                 >
                   <option>United States</option>
@@ -82,39 +128,19 @@ export const CheckOut = () => {
                 </select>
                 <svg
                   viewBox="0 0 16 16"
-                  fill="currentColor"
+                  fillRule="currentColor"
                   data-slot="icon"
                   aria-hidden="true"
                   className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
                 >
-                  <path
-                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                  />
+                  <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" />
                 </svg>
               </div>
             </div>
-            <div className="col-span-full">
-              <label
-                for="street-address"
-                className="block text-sm/6 font-medium text-gray-900"
-              >
-                Street address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="street-address"
-                  type="text"
-                  name="street-address"
-                  autocomplete="street-address"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
-                />
-              </div>
-            </div>
+
             <div className="sm:col-span-2 sm:col-start-1">
               <label
-                for="city"
+                htmlFor="city"
                 className="block text-sm/6 font-medium text-gray-900"
               >
                 City
@@ -124,14 +150,14 @@ export const CheckOut = () => {
                   id="city"
                   type="text"
                   name="city"
-                  autocomplete="address-level2"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
                 />
               </div>
             </div>
+
             <div className="sm:col-span-2">
               <label
-                for="region"
+                htmlFor="region"
                 className="block text-sm/6 font-medium text-gray-900"
               >
                 first phone
@@ -141,14 +167,14 @@ export const CheckOut = () => {
                   id="region"
                   type="text"
                   name="region"
-                  autocomplete="address-level1"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
                 />
               </div>
             </div>
+
             <div className="sm:col-span-2">
               <label
-                for="postal-code"
+                htmlFor="postal-code"
                 className="block text-sm/6 font-medium text-gray-900"
               >
                 last phone
@@ -158,15 +184,14 @@ export const CheckOut = () => {
                   id="postal-code"
                   type="text"
                   name="postal-code"
-                  autocomplete="postal-code"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
                 />
               </div>
             </div>
             <ButtonMain className={"w-40"}>Check out</ButtonMain>
-          </div>
+          </form>
         </div>
       </div>
-    </diV>
+    </div>
   );
 };

@@ -1,7 +1,8 @@
 import React from "react";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import { LocationMarker } from "../../Components/LocationMarker";
+import { Map } from "../../Components/Map";
 import L from 'leaflet'
+import { LeafletGeocoder } from "../CheckOut/LeafletGeocoder";
 
 export const Contact = () => {
   const areas = [
@@ -14,32 +15,15 @@ export const Contact = () => {
   const position = [30.0467, 31.2347];
 
   return (
-    <div className=" p-7 grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <MapContainer
-        className="mt-8"
-        center={position}
-        zoom={10}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {areas.map(({ area, restaurantName }) => {
-          return (
-            <Marker position={area}>
-              <Popup>
-                Welcome to Fork & Knife Restaurant, <p />
-                {restaurantName}
-              </Popup>
-            </Marker>
-          );
-        })}
-      </MapContainer>
-
+    <div className="p-7 grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <Map position={position}>
+       <LocationMarker areas={areas}/> 
+       <LeafletGeocoder/>
+      </Map>
+   
       <div>
-        {areas.map(({ restaurantName }) => (
-          <div>
+        {areas.map(({ restaurantName }, index) => (
+          <div key={index}>
             <h1 className="font-black text-2xl p-4 main-font">
               {restaurantName}
             </h1>
@@ -51,15 +35,14 @@ export const Contact = () => {
           </div>
         ))}
       </div>
+
     </div>
   );
-
 };
- 
+/*
 const DefaultIcon = L.icon({
-  iconUrl: "/chicken.webp", 
-  iconSize: [ 40 , 40] ,
-})
-L.Marker.prototype.options.icon = DefaultIcon ;
-
-  
+  iconUrl: "/chicken.webp",
+  iconSize: [40, 40],
+});
+L.Marker.prototype.options.icon = DefaultIcon;
+*/
