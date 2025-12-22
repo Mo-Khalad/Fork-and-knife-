@@ -3,8 +3,6 @@ import { create } from 'zustand'
 
 export const DataShareContext = create(
 (set)=>({
-    dataShare: 'pizza' ,
-    handleDataShare:(meal)=>set(()=>({ dataShare : meal}))
-   
-
+    mealName: 'pizza' ,
+    handleDataShare:(meal)=>set(()=>({ mealName : meal}))
 }))
