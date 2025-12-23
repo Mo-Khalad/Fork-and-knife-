@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchDetailsMeal } from "../../util/Http";
 import { DisplayOtherMeals } from "./DisplayOtherMeals";
 import { DataShareContext } from "../../Store/DataShareContext";
-
+import { successfullyDone } from "../../Logic/Logic";
 export const DetailsMeal = () => {
   const { addItemToCartHandler } = cartContext()
   const { dataShare } = DataShareContext()
@@ -21,6 +21,11 @@ export const DetailsMeal = () => {
 
   const mealDetails = data?.data?.recipe;
   
+  const handleAddToCart=(mealDetails)=>{
+    addItemToCartHandler( mealDetails )
+    successfullyDone('successfully added in cart')
+  }
+
   return (
     <>
       <div className="grid grid-cols-8 p-5 w-full">
@@ -58,8 +63,7 @@ export const DetailsMeal = () => {
 
           <ButtonMain
             className={"w-40 my-8"}
-            //, 'successfully added in cart'
-            onClick={()=>( addItemToCartHandler( mealDetails ))}
+            onClick={()=> handleAddToCart(mealDetails) }
           >
             add to cart
           </ButtonMain>

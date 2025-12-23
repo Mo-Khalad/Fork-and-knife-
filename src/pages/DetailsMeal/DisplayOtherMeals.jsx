@@ -2,14 +2,13 @@ import React from "react";
 import { fetchMeals } from "../../util/Http";
 import { useQuery } from "@tanstack/react-query";
 import { DataShareContext } from "../../Store/DataShareContext";
-import { Link } from "react-router-dom";
-import { ButtonMain } from "../../Components/Ui/ButtonMain";
+import { TransitionButton } from "../../Components/Ui/TransitionButton";
 export const DisplayOtherMeals = () => {
-  const { dataShare } = DataShareContext();
+  const { mealName } = DataShareContext();
 
   const { data } = useQuery({
-    queryKey: ["meal", dataShare],
-    queryFn: () => fetchMeals({ mealName: dataShare, method: "get_meals" }),
+    queryKey: ["meal", mealName],
+    queryFn: () => fetchMeals({ mealName: mealName, method: "get_meals" }),
     staleTime: Infinity,
   });
   const dataOtherMeals = data?.data?.recipes;
@@ -45,11 +44,12 @@ export const DisplayOtherMeals = () => {
                         Tenetur, sed.
                       </p>
 
-                      <Link to={`../../DetailsMeal/${recipe_id}`}>
-                        <ButtonMain className={'w-40'}>
-                          add to cart
-                        </ButtonMain>
-                      </Link>
+                      <TransitionButton
+                        path={`../detailsMeal/${recipe_id}`}
+                        className={"w-40 border-2 border-b-fuchsia-950"}
+                      >
+                        add to cart
+                      </TransitionButton>
 
                       <span className="ms-1 text-2xl"> {social_rank} </span>
                     </div>
@@ -59,7 +59,6 @@ export const DisplayOtherMeals = () => {
             }
           )}
       </div>
-    
     </>
   );
 };

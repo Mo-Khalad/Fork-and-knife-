@@ -1,7 +1,8 @@
 import React from "react";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
-import { cartContext } from "../../Store/cartContext";
-//import successfullyDone from "../../Logic/successfullyDone";
+import { cartContext } from "../../Store/CartContext";
+import { successfullyDone, totalPriceProduct } from "../../Logic/Logic";
+
 export const CartItems = () => {
   const {
     addItemToCartHandler,
@@ -9,6 +10,11 @@ export const CartItems = () => {
     cartMeals,
     removeItemToCartHandler,
   } = cartContext();
+
+  const handleRemoveToCart = (cartMeal) => {
+    successfullyDone("successfully remove to cart");
+    removeItemToCartHandler(cartMeal);
+  };
 
   return (
     <>
@@ -28,30 +34,27 @@ export const CartItems = () => {
               </div>
 
               <div className="grid col-span-4 mt-4">
-                <h3>50$</h3>
+                <h3>{totalPriceProduct(cartMeal.social_rank , cartMeal.quantity)}$</h3>
                 <h3>{cartMeal.title}</h3>
+                <h3>{cartMeal.social_rank.toFixed(2)}$</h3>
               </div>
             </div>
 
-            <div className=" col-span-2 col-end-9 w-1xl grid place-content-center">
-              <ul className="bg-pink-100 opacity-100 py-2 w-33 px-4 grid grid-cols-3 gap-2 mb-3">
-                <li>
-                  <i
-                    onClick={() => addItemToCartHandler(cartMeal)}
-                    className="fa-solid fa-plus text-main-color hover:p-1"
-                  ></i>
-                </li>
-                <li className="text-center text-main-color">
+            <div className="col-span-2 col-end-9 w-1xl grid place-content-center">
+              <div className="bg-pink-100 opacity-100 py-2 w-33 px-4 grid grid-cols-3 gap-2 mb-3">
+                <i
+                  onClick={() => addItemToCartHandler(cartMeal)}
+                  className="fa-solid pt-1 fa-plus text-main-color hover:p-1"
+                ></i>
+                <span className="text-center text-main-color">
                   {cartMeal.quantity}
-                </li>
-                <li>
-                  <i
-                    onClick={() => decrementItemToCartHandler(cartMeal)}
-                    className="fa-solid fa-minus text-main-color hover:p-1"
-                  ></i>
-                </li>
-              </ul>
-              <ButtonMain onClick={() => removeItemToCartHandler(cartMeal)}>
+                </span>
+                <i
+                  onClick={() => decrementItemToCartHandler(cartMeal)}
+                  className="fa-solid pt-1 fa-minus text-main-color hover:p-1"
+                ></i>
+              </div>
+              <ButtonMain onClick={() => handleRemoveToCart(cartMeal)}>
                 remove
               </ButtonMain>
             </div>

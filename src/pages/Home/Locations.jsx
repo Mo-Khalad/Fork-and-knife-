@@ -9,17 +9,17 @@ export const Locations = () => {
           Locations
         </h2>
         <div className="container grid grid-cols-1 sm:grid-cols-2 gap-8 m-auto p-7">
-          {informationLocation.map(({ name, image, paragraph } , index) => {
+          {informationLocation.map(({ name, image, paragraph }, index) => {
             return (
-                <ul className="bg-second-color rounded-main-radius main-shadow" key={index}>
-                  <li>
-                    <img src={image} alt="location" className="w-full" />
-                  </li>
-                  <li className="font-extrabold text-1xl p-3">
-                    names : {name}
-                  </li>
-                  <p className="font-sans p-1 line-clamp-3">{paragraph}</p>
-                </ul>
+              <div
+                className="bg-second-color rounded-main-radius main-shadow"
+                key={index}
+              >
+                <img src={image} alt="location" className="w-full" />
+
+                <h3 className="font-extrabold text-1xl p-3">names : {name}</h3>
+                <p className="font-sans p-1 line-clamp-3">{paragraph}</p>
+              </div>
             );
           })}
         </div>

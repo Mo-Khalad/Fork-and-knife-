@@ -4,12 +4,11 @@ import "leaflet/dist/leaflet.css";
 import { Map } from "../../Components/Map";
 import { PickLocation } from "../../Components/PickLocation";
 import { LeafletGeocoder } from "./LeafletGeocoder";
-import { MapContainer, TileLayer } from "react-leaflet";
 
 export const CheckOut = () => {
   const [pickLocation, setPickLocation] = useState({
-    lat: '',
-    lng: '',
+    lat: 30.0444,
+    lng: 31.2357,
   });
   useEffect(() => {
     if (navigator.geolocation) {
@@ -18,7 +17,7 @@ export const CheckOut = () => {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
           setPickLocation({
-            lat: latitude ,
+            lat: latitude,
             lng: longitude,
           });
         },
@@ -27,8 +26,7 @@ export const CheckOut = () => {
         }
       );
     }
-    }
-  , []);
+  }, []);
 
   return (
     <div className="w-full">
@@ -43,15 +41,13 @@ export const CheckOut = () => {
               Street address
             </h2>
             <p>
-              lat :{pickLocation?.lat !== '' ? pickLocation?.lat : 30.0444}
+              lat :{pickLocation?.lat !== 30.0444 ? pickLocation?.lat : 30.0444}
             </p>
-            <p>
-              lng :{pickLocation?.lng !== '' ? pickLocation?.lng : 31.2357}
-            </p>
+            <p>lng :{pickLocation?.lng !== 31.2357 ? pickLocation?.lng : 31.2357}</p>
           </div>
 
           <div className="col-span-full gap-10">
-            <Map position={[pickLocation?.lat , pickLocation?.lng]}>
+            <Map position={[pickLocation?.lat, pickLocation?.lng]}>
               <PickLocation
                 setPickLocation={setPickLocation}
                 pickLocation={pickLocation}

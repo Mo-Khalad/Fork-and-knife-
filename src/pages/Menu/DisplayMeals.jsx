@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { TransitionButton } from "../../Components/Ui/TransitionButton";
 
 export const DisplayMeals = ({ mealData }) => {
   const { image_url, title, social_rank } = mealData;
@@ -15,11 +15,13 @@ export const DisplayMeals = ({ mealData }) => {
         <p className="line-clamp-2 p-1 md:p-1">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sed.
         </p>
-        <Link to={`../../DetailsMeal/${id}`}>
-          <button className="bg-main-color text-second-color px-7 py-2 rounded-main-radius cursor-pointer hover:bg-second-color border-2 border-b-fuchsia-950 hover:text-main-color transition duration-700">
-            add to cart
-          </button>
-        </Link>
+
+        <TransitionButton
+          className={"border-2 border-b-fuchsia-950"}
+          path={`../../detailsMeal/${id}`}
+        >
+          add to cart
+        </TransitionButton>
 
         <span className="ms-1 text-2xl"> {social_rank.toFixed(2)}$ </span>
       </div>
