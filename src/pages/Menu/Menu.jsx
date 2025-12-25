@@ -59,8 +59,8 @@ export const Menu = () => {
           </h2>
           <div className="grid grid-cols-1 p-10 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 background-details">
             {data !== undefined &&
-              data?.data?.recipes.map((mealData) => (
-                <DisplayMeals mealData={mealData} key={mealData.recipe_id} />
+              data?.data?.recipes.map((mealData , index) => (
+                <DisplayMeals mealData={mealData} key={mealData.recipe_id} index={index} />
               ))}
           </div>
         </div>

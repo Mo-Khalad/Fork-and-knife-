@@ -3,24 +3,27 @@ import { Home } from "./pages/Home/Home.jsx";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import "leaflet/dist/leaflet.css";
+import 'animate.css';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { About } from "./pages/About/About.jsx";
 import { Menu } from "./pages/Menu/Menu.jsx";
-import { CheckOut } from "./pages/CheckOut/CheckOut.jsx";
+import { CheckOut } from "./pages/CheckOut/CheckOut";
 import { Cart } from "./pages/Cart/Cart.jsx";
-import { DetailsMeal } from "./pages/DetailsMeal/DetailsMeal.jsx";
-import { Contact } from "./pages/Contact/Contact.jsx";
-import { LayOut } from "./Components/LayOut/LayOut.jsx";
+import { DetailsMeal } from "./pages/DetailsMeal/DetailsMeal";
+import { Contact } from "./pages/Contact/Contact";
+import { LayOut } from "./Components/LayOut/LayOut";
 import { QueryClient } from "@tanstack/react-query";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Error } from "./pages/Error/Error";
 
 export const App = () => {
+  
   const routes = createBrowserRouter([
     {
       path: "",
-      element: <LayOut />,
+      element: <LayOut />, errorElement : <Error/>,
       children: [
         { path: "", element: <Home />, index: true },
         { path: "about", element: <About /> },

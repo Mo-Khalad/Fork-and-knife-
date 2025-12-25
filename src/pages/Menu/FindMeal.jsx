@@ -13,7 +13,7 @@ export const FindMeal = ({
   const { handleDataShare } = DataShareContext();
   return (
     <>
-      <div className="absolute top-14 left-1 h-lvh mt-1 ">
+      <div className="absolute top-14 left-1 h-lvh mt-1 z-30">
         <div className="w-72 xl:w-64 text-center top-15 xl:top-17 min-h-52 sm:min-h-48 left-1 bg-main-color fixed">
           <h2 className="text-second-color text-4xl main-font mb-8 mt-12">
             menu

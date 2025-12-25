@@ -1,6 +1,7 @@
 /* cursor: url("./assets/images/icon-google.png") ,auto !important; */
 body{
   background-color: rgb(221 , 220 , 218);
+  overflow-x:hidden ;
 }
 :root{
   --main-color:rgba( 109,  9 , 51 , 0.966) ;

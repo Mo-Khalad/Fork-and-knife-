@@ -20,6 +20,7 @@ export const DetailsMeal = () => {
   });
 
   const mealDetails = data?.data?.recipe;
+  console.log("details");
   
   const handleAddToCart=(mealDetails)=>{
     addItemToCartHandler( mealDetails )

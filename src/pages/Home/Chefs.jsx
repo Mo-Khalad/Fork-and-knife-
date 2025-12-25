@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { informationChefs } from "./information";
+import Aos from "aos";
 
 export const Chefs = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 600,
+      easing: "ease-in-out",
+      once: false,  
+      mirror: true,
+    });
+  }, []);
   return (
     <>
       <div className={`w-full gird place-content-center`}>
@@ -11,6 +20,7 @@ export const Chefs = () => {
             return (
               <div
                 className="rounded-main-radius main-shadow p-3 bg-second-color"
+                data-aos="zoom-in-up"
                 key={index}
               >
                 <img src={image} alt="chef" className="min-h-65" />

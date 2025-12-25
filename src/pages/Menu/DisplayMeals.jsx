@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TransitionButton } from "../../Components/Ui/TransitionButton";
+import Aos from "aos";
 
-export const DisplayMeals = ({ mealData }) => {
+export const DisplayMeals = ({ mealData , index}) => {
   const { image_url, title, social_rank } = mealData;
   const id = mealData.recipe_id;
 
+  useEffect(() => {
+    Aos.init({
+      duration: 600,
+      easing: "ease-in-out",
+      once: false,  
+      mirror: true,
+    });
+  }, []);
   return (
-    <div className="bg-second-color main-shadow rounded-main-radius min-90 mt-10 sm:mt-0 max-w-64">
+    <div className="bg-second-color main-shadow rounded-main-radius min-90 mt-10 sm:mt-0 max-w-64"
+         data-aos={`${ index >= 10 ? 'zoom-out' : 'zoom-out-right'}`}
+    >
       <div>
         <img src={image_url} alt={title} className="min-h-50 h-50 w-full" />
       </div>

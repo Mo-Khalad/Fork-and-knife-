@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { informationLocation } from "./information";
+import 'aos/dist/aos.css';
+import Aos from "aos";
 
 export const Locations = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+      easing: "ease-in-out",
+      once: false,  
+      mirror: true,
+    });
+  }, []);
+
   return (
     <>
       <div className={`w-full gird place-content-center`}>
@@ -12,7 +23,7 @@ export const Locations = () => {
           {informationLocation.map(({ name, image, paragraph }, index) => {
             return (
               <div
-                className="bg-second-color rounded-main-radius main-shadow"
+                className="bg-second-color rounded-main-radius main-shadow" data-aos={`${ (index === 0 || index === 2 ) ? 'fade-right':'fade-left'}`}
                 key={index}
               >
                 <img src={image} alt="location" className="w-full" />

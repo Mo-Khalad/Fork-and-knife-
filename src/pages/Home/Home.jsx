@@ -10,8 +10,8 @@ export const Home = () => {
     <>
       <MainSection />
       <MealsSlider />
-      <Chefs />
       <Locations />
+      <Chefs />
       <SomeMeals />
     </>
   );
