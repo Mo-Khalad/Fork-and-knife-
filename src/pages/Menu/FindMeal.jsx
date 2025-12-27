@@ -14,7 +14,7 @@ export const FindMeal = ({
   return (
     <>
       <div className="absolute top-14 left-1 h-lvh mt-1 z-30">
-        <div className="w-72 xl:w-64 text-center top-15 xl:top-17 min-h-52 sm:min-h-48 left-1 bg-main-color fixed">
+        <div className="w-72 xl:w-64 text-center top-15 xl:top-17 min-h-52 sm:min-h-48 left-2 bg-main-color fixed">
           <h2 className="text-second-color text-4xl main-font mb-8 mt-12">
             menu
           </h2>
@@ -32,7 +32,7 @@ export const FindMeal = ({
           ></i>
         </div>
 
-        <div className="overflow-y-scroll min-h-3/5 background-menu text-second-color left-1 fixed top-60 bottom-1 w-72 xl:w-64 z-20">
+        <div className="overflow-y-auto min-h-3/5 background-menu text-second-color left-2 fixed top-60 bottom-1 w-72 xl:w-64 z-20">
           <ul className="p-4 text-center relative text-2xl text-second-color second-font">
             {meal.length === 0 ? (
               <li className="mt-1 font-bold"> Meal not available </li>

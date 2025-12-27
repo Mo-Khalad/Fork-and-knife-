@@ -1,44 +1,47 @@
 import React, { useState } from "react";
 import { SideNavbar } from "./SideNavbar";
 import { NavLink } from "react-router-dom";
-
+import { LanguageChangeContext } from "../../Store/LanguageChangeContext";
+import { NavLinks } from './NavLinks'
+import { useTranslation } from "react-i18next";
+import { totalCartMeals } from "../../Logic/Logic";
+import { cartContext } from "../../Store/CartContext"
 export const Navbar = () => {
- const [displaySideNavbar , setDisplaySideNavbar] = useState(false)
+  const { language , handleLanguageChange } = LanguageChangeContext();
+  const [displaySideNavbar , setDisplaySideNavbar] = useState(false);
+  const { i18n } = useTranslation();
+  const { cartMeals } = cartContext()
 
-const handleToggleSideNavbar =()=>{
+  const handleToggleSideNavbar =()=>{
   setDisplaySideNavbar(!displaySideNavbar)
 }
 
   return (
-    <nav className="bg-main-color p-3 relative">
+    <nav className="bg-main-color p-3 fixed z-99999999 top-0 left-0 right-0">
       <div className="container">
         <div className="flex justify-between place-content-center">
           <div>
           <div className="hidden md:flex items-center cursor-pointer text-gray-200 gap-6 ">
-              <img src={"logo"} alt="icon" />
-              <NavLink className="hover:text-gray-50 transition duration-700" to='./'>
-                Home
-              </NavLink>
-              <NavLink className="hover:text-gray-50 transition duration-700" to={'./menu'}>
-                Menu
-              </NavLink>
-              <NavLink className="hover:text-gray-50 transition duration-700" to={'./about'}>
-                About
-              </NavLink>
-              <NavLink className="hover:text-gray-50 transition duration-700" to={'./contact'}>
-                Contact
-              </NavLink>
+             <NavLinks className="hover:text-gray-50 transition duration-700"/>
             </div>
 
-            <div className="block md:hidden "><i onClick={handleToggleSideNavbar} className="fa-solid fa-list text-2xl text-second-color"></i></div>            
-             { displaySideNavbar && <SideNavbar/> }
+          <div className="md:hidden"><i onClick={handleToggleSideNavbar} className="fa-solid fa-list text-2xl text-second-color"></i></div>            
+             { displaySideNavbar && <SideNavbar
+              className="hover:text-gray-50 transition duration-700 p-3 block"
+              quantity={totalCartMeals(cartMeals) }
+              /> }
           </div>
 
           <div>
            <NavLink to={'../../cart'}><i className="fa-solid fa-bag-shopping cursor-pointer text-gray-200 hover:text-gray-50 transition duration-700 text-3xl"></i></NavLink> 
-            <span className="md:block hidden text-gray-100 rounded-b-full absolute top-13 text-xs bg-main-color p-2 right-15">
-              77
+            <span className="md:block hidden text-gray-100 rounded-b-full absolute top-13 text-center w-7 text-xs bg-main-color p-2 right-15">
+             { totalCartMeals(cartMeals) }
             </span>
+            <button 
+            onClick={()=>handleLanguageChange(language , i18n)} 
+            className="border border-second-color max-w-20 w-24 text-second-color p-1 ms-3">
+              {language ==="en" ? "ar" :"en"}
+            </button>
           </div>
         </div>
       </div>

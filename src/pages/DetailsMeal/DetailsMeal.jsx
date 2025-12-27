@@ -8,10 +8,13 @@ import { fetchDetailsMeal } from "../../util/Http";
 import { DisplayOtherMeals } from "./DisplayOtherMeals";
 import { DataShareContext } from "../../Store/DataShareContext";
 import { successfullyDone } from "../../Logic/Logic";
+import { useTranslation } from "react-i18next" ;
+
 export const DetailsMeal = () => {
   const { addItemToCartHandler } = cartContext()
   const { dataShare } = DataShareContext()
   const { id } = useParams();
+  const { t } = useTranslation()
   const { data } = useQuery({
     queryKey: [" detailMeal ", id],
     queryFn: () => fetchDetailsMeal(id),
@@ -20,11 +23,10 @@ export const DetailsMeal = () => {
   });
 
   const mealDetails = data?.data?.recipe;
-  console.log("details");
   
   const handleAddToCart=(mealDetails)=>{
     addItemToCartHandler( mealDetails )
-    successfullyDone('successfully added in cart')
+    successfullyDone(t('successfully Added'))
   }
 
   return (
@@ -44,7 +46,7 @@ export const DetailsMeal = () => {
           </h1>
 
           <h2 className="text-4xl font-bold second-font">
-            {mealDetails?.social_rank}
+            {mealDetails?.social_rank.toFixed(2)}$
           </h2>
 
           <p className="p-5 second-font text-2xl">
@@ -63,10 +65,10 @@ export const DetailsMeal = () => {
           ))}
 
           <ButtonMain
-            className={"w-40 my-8"}
+            className={"w-48 my-8"}
             onClick={()=> handleAddToCart(mealDetails) }
           >
-            add to cart
+           { t('add') }
           </ButtonMain>
         </div>
       </div>

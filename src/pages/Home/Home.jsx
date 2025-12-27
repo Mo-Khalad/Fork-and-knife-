@@ -7,12 +7,12 @@ import { MainSection } from "./MainSection";
 
 export const Home = () => {
   return (
-    <>
+    <div>
       <MainSection />
-      <MealsSlider />
-      <Locations />
+      <MealsSlider/>
       <Chefs />
-      <SomeMeals />
-    </>
+      <Locations/>
+    </div>
   );
 };
+//       <SomeMeals />

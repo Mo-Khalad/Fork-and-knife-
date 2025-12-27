@@ -1,21 +1,17 @@
 import React from "react";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
 import { cartContext } from "../../Store/CartContext";
-import { successfullyDone, totalPriceProduct } from "../../Logic/Logic";
-
+import { successfullyDone , totalPriceProduct } from "../../Logic/Logic" ;
+import { useTranslation } from "react-i18next";
 export const CartItems = () => {
+const { t } = useTranslation()
   const {
     addItemToCartHandler,
     decrementItemToCartHandler,
     cartMeals,
     removeItemToCartHandler,
   } = cartContext();
-
-  const handleRemoveToCart = (cartMeal) => {
-    successfullyDone("successfully remove to cart");
-    removeItemToCartHandler(cartMeal);
-  };
-
+  
   return (
     <>
       {cartMeals.map((cartMeal) => {
@@ -54,8 +50,8 @@ export const CartItems = () => {
                   className="fa-solid pt-1 fa-minus text-main-color hover:p-1"
                 ></i>
               </div>
-              <ButtonMain onClick={() => handleRemoveToCart(cartMeal)}>
-                remove
+              <ButtonMain  onClick={() => removeItemToCartHandler(cartMeal)}>
+                {t("remove")}
               </ButtonMain>
             </div>
           </div>

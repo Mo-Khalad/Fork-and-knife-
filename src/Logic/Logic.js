@@ -8,7 +8,7 @@ export const totalPriceProducts=(meals)=>{
        return ( total + (meal.social_rank * meal.quantity))
    },0).toFixed(2) 
 }
-export const totalCartItems = (meals)=> meals.reduce((totalNumberOfItems, CartItem) => {
+export const totalCartMeals = (meals)=> meals.reduce((totalNumberOfItems, CartItem) => {
     return ( totalNumberOfItems + CartItem.quantity );
 }, 0);
 

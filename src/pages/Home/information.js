@@ -11,31 +11,40 @@ import Sheikh_Zayed from "../../assets/images/Sheikh Zayed.webp"
 import Rehab from '../../assets/images/Rehab.webp';
 import Downtown from '../../assets/images/Downtown.webp';
 //slider images
-import pizza from '../../assets/images/pizza.avif'
 
 // information chefs 
-const paragraph =
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi sequi reiciendis consectetur accusamus, odio animi modi eaque, veritatis voluptatum, nemo nesciunt fuga similique magni recusandae quis officiis beatae nihil velit.";
+const information_chef ="informationChefs";
 
 export const informationChefs = [
-    { name: "ahmed", image: chef1, paragraph },
-    { name: "ahmed", image: chef2, paragraph },
-    { name: "ahmed", image: chef3, paragraph },
-    { name: "ahmed", image: chef4, paragraph },
-    { name: "ahmed", image: chef5, paragraph },
-    { name: "ahmed", image: chef6, paragraph },
+    { name: "Ahmed", image: chef1, information_chef },
+    { name: "Ibrahim", image: chef2, information_chef },
+    { name: "mohmed", image: chef3, information_chef },
+    { name: "Ahmed", image: chef4, information_chef },
+    { name: "Ibrahim", image: chef5, information_chef },
+    { name: "mohmed", image: chef6, information_chef },
 ];
+/*
+  
 
+
+     "one":" Our first restaurant opened in 2000 in Sheikh Zayed and has become one of the most 
+        famous restaurants in Sheikh Zayed. This is thanks to providing the best food and service.
+        We employ some of the most famous chefs in Egypt, and we look forward to opening more branches
+        around the world. " 
+*/
 //information locations
-const paragraphLocations ="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi sequi reiciendis consectetur accusamus, odio animi modi eaque, veritatis voluptatum, nemo nesciunt fuga similique magni recusandae quis officiis beatae nihil velit";
+const Street ="Street";
 
 export const informationLocation = [
-    { name: "October", image: October,  paragraph:paragraphLocations },
-    { name: "Sheikh_Zayed ", image: Sheikh_Zayed , paragraph:paragraphLocations },
-    { name: "Rehab", image: Rehab,  paragraph:paragraphLocations },
-    { name: "Downtown", image: Downtown,  paragraph:paragraphLocations },
+    { name: "October", image: October, Street },
+    { name: "Sheikh Zayed", image: Sheikh_Zayed , Street },
+    { name: "Rehab", image: Rehab, Street },
+    { name: "Downtown", image: Downtown, Street },
 ];
 
 // sliderImages
 
-export const sliderImages = [ {image: pizza} , {image: pizza} , {image: pizza}, {image: pizza},{image: pizza},{image: pizza},{image: pizza},{image: pizza},{image: pizza},{image: pizza},{image: pizza},{image: pizza}]
+export const sliderImages = [ {image: '/pizza.avif'} , {image: '/pizza.avif'} , {image: '/pizza.avif'},
+{image: '/pizza.avif'},{image: '/pizza.avif'},{image: '/pizza.avif'},{image: '/pizza.avif'},
+{image: '/pizza.avif'},{image: '/pizza.avif'},{image: '/pizza.avif'},{image: '/pizza.avif'},
+{image: '/pizza.avif'}]

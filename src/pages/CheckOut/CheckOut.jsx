@@ -4,8 +4,10 @@ import "leaflet/dist/leaflet.css";
 import { Map } from "../../Components/Map";
 import { PickLocation } from "../../Components/PickLocation";
 import { LeafletGeocoder } from "./LeafletGeocoder";
+import { useTranslation } from "react-i18next" ;
 
 export const CheckOut = () => {
+  const { t } = useTranslation()
   const [pickLocation, setPickLocation] = useState({
     lat: 30.0444,
     lng: 31.2357,
@@ -29,25 +31,25 @@ export const CheckOut = () => {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full mt-25">
       <div className="container p-15">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-4xl main-font text-main-color text-center">
-            Check Out
+           {t("Check Out")}
           </h2>
 
-          <div className="col-span-full mt-4">
-            <h2 className="font-bold text-2xl text-gray-900 ">
-              Street address
+          <div className="col-span-full">
+            <h2 className="font-bold text-2xl text-gray-900 mt-5">
+                {t('Street address')}
             </h2>
-            <p>
-              lat :{pickLocation?.lat !== 30.0444 ? pickLocation?.lat : 30.0444}
+            <p className="mt-5">
+              {t('lat')} :  {pickLocation?.lat !== 30.0444 ? pickLocation?.lat : 30.0444}
             </p>
-            <p>lng :{pickLocation?.lng !== 31.2357 ? pickLocation?.lng : 31.2357}</p>
+            <p className="mt-2">{t('lng')} :  {pickLocation?.lng !== 31.2357 ? pickLocation?.lng : 31.2357}</p>
           </div>
 
           <div className="col-span-full gap-10">
-            <Map position={[pickLocation?.lat, pickLocation?.lng]}>
+            <Map position={[pickLocation?.lat, pickLocation?.lng]} zoom={16}>
               <PickLocation
                 setPickLocation={setPickLocation}
                 pickLocation={pickLocation}
@@ -62,7 +64,7 @@ export const CheckOut = () => {
                 htmlFor="first-name"
                 className="block text-sm/6 font-medium text-gray-900"
               >
-                First name
+                {t("First name")}
               </label>
               <div className="mt-2">
                 <input
@@ -75,10 +77,10 @@ export const CheckOut = () => {
             </div>
             <div className="sm:col-span-3">
               <label
-                htmlFor="last-name"
+                htmlFor="Last-name"
                 className="block text-sm/6 font-medium text-gray-900"
               >
-                Last name
+                {t('Last name')}
               </label>
               <div className="mt-2">
                 <input
@@ -94,7 +96,7 @@ export const CheckOut = () => {
                 htmlFor="email"
                 className="block text-sm/6 font-medium text-gray-900"
               >
-                Email address
+                {t("Email address")}
               </label>
               <div className="mt-2">
                 <input
@@ -110,7 +112,7 @@ export const CheckOut = () => {
                 htmlFor="country"
                 className="block text-sm/6 font-medium text-gray-900"
               >
-                Country
+                {t('Country')}
               </label>
               <div className="mt-2 grid grid-cols-1">
                 <select
@@ -139,7 +141,7 @@ export const CheckOut = () => {
                 htmlFor="city"
                 className="block text-sm/6 font-medium text-gray-900"
               >
-                City
+               {t('city')}
               </label>
               <div className="mt-2">
                 <input
@@ -156,7 +158,7 @@ export const CheckOut = () => {
                 htmlFor="region"
                 className="block text-sm/6 font-medium text-gray-900"
               >
-                first phone
+               {t('First phone')}
               </label>
               <div className="mt-2">
                 <input
@@ -173,7 +175,7 @@ export const CheckOut = () => {
                 htmlFor="postal-code"
                 className="block text-sm/6 font-medium text-gray-900"
               >
-                last phone
+              {t("Last phone")}
               </label>
               <div className="mt-2">
                 <input
@@ -184,7 +186,7 @@ export const CheckOut = () => {
                 />
               </div>
             </div>
-            <ButtonMain className={"w-40"}>Check out</ButtonMain>
+            <ButtonMain className={"w-40"}>{t('Check Out')}</ButtonMain>
           </form>
         </div>
       </div>

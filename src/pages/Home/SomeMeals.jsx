@@ -1,54 +1,9 @@
 import React from "react";
-import pizza from "../../assets/images/pizza.avif";
+//import pizza from "../../assets/images/pizza.avif";
 import { Slider } from "./Slider";
 import { Link } from "react-router-dom";
 import { SwiperSlide } from "swiper/react";
-// Import Swiper React components
-/*
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "./styles.css";
-
-// import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import { Link } from "react-router-dom";
-
-export const SomeMeals = () => {
-  return (
-    <div className="h-150">
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={4}
-        centeredSlides={false}
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 4,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 5,
-            spaceBetween: 50,
-          },
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper h-150"
-      >
-      */
 export const SomeMeals = () => {
   return (
     <div className="h-150">

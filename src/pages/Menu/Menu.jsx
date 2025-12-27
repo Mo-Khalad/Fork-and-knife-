@@ -5,15 +5,14 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchMeals } from "../../util/Http";
 import { DataShareContext } from "../../Store/DataShareContext";
 import { FindMeal } from "./FindMeal";
-import menu from '../../assets/images/menu.png'
+import menu from '../../assets/images/menu.png';
 
 export const Menu = () => {
   const [meal, setMeal] = useState(mealsNames);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [ searchElement , setSearchElement] = useState('')
-
   const { mealName } = DataShareContext();
-
+  
   const handleMealsMenuDisplay = () => {
     setShow(true);
   };
@@ -37,8 +36,8 @@ export const Menu = () => {
   };
 
   return (
-    <div className="p-5 mb-3 min-h-lvh">
-      <img className={`cursor-pointer fixed left-1 ${show ? 'hidden' : 'block'}`} width={50}  src={menu} alt="menu" onClick={handleMealsMenuDisplay}/>
+    <div className="p-5 mb-3 mt-15 min-h-lvh">
+      <img className={`cursor-pointer fixed left-5 ${show ? 'hidden' : 'block'}`} width={50}  src={menu} alt="menu" onClick={handleMealsMenuDisplay}/>
       <div className="grid grid-cols-1 w-full">
           { show && (
             <FindMeal

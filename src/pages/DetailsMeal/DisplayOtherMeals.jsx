@@ -3,9 +3,12 @@ import { fetchMeals } from "../../util/Http";
 import { useQuery } from "@tanstack/react-query";
 import { DataShareContext } from "../../Store/DataShareContext";
 import { TransitionButton } from "../../Components/Ui/TransitionButton";
+import { useTranslation } from "react-i18next"
+
 export const DisplayOtherMeals = () => {
   const { mealName } = DataShareContext();
-
+  const { t } = useTranslation()
+ 
   const { data } = useQuery({
     queryKey: ["meal", mealName],
     queryFn: () => fetchMeals({ mealName: mealName, method: "get_meals" }),
@@ -46,12 +49,12 @@ export const DisplayOtherMeals = () => {
 
                       <TransitionButton
                         path={`../detailsMeal/${recipe_id}`}
-                        className={"w-40 border-2 border-b-fuchsia-950"}
+                        className={"w-44 border-2 border-b-fuchsia-950"}
                       >
-                        add to cart
+                        {t('add')}
                       </TransitionButton>
 
-                      <span className="ms-1 text-2xl"> {social_rank} </span>
+                      <span className="ms-1"> {social_rank.toFixed(2)}$ </span>
                     </div>
                   </div>
                 );

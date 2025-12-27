@@ -1,41 +1,30 @@
 /* cursor: url("./assets/images/icon-google.png") ,auto !important; */
+html{
+  scrollbar-color: var(--main-color) rgba(255, 254, 254, 0.98);
+}
 body{
   background-color: rgb(221 , 220 , 218);
   overflow-x:hidden ;
 }
 :root{
   --main-color:rgba( 109,  9 , 51 , 0.966) ;
-}
-.leaflet-container{
-  width: 100%;
-  height: 80vh ;
+  --second-color:rgb(212, 212, 212);
 }
 @import "tailwindcss";
 @theme{
   --color-main-color: var(--main-color);
-  --color-second-color: rgb(212, 212, 212);
+  --color-second-color: var(--second-color);
   --radius-main-radius:0.2rem; 
   --color-hover-color:rgba(255, 255, 255, 0.075) ;
   --color-meals-slider:rgb(63, 7, 30) ;
-  --border-main-color: 1px solid #222
+  --border-main-color: 1px solid #222;
+}
+.leaflet-container{
+  width: 100%;
+  height: 65vh ;
 }
 li{
  list-style-type: none;
-}
-::-webkit-scrollbar {
-  width: 1rem;
-}
-::-webkit-scrollbar-track{
-  background-color: rgb(212, 212, 212);
-}
-::-webkit-scrollbar-thumb {
-  background-color:rgb(134, 134, 134) ;
-  background-color: var(--main-color);
-  cursor: pointer;
-}
-::-webkit-scrollbar-thumb:hover{
-  background-color: var(--main-color);
-  background-color:rgba(109, 9, 51, 0.884) ;
 }
 .main-font{
   font-family: "Playwrite NZ Guides", cursive;
@@ -61,7 +50,10 @@ li{
   background-color:rgba(109, 9, 51, 0.884) ;
 }
 i , button {
- cursor: pointer; 
+ cursor:pointer 
+}
+.icon-phone ,.icon-message ,.icon-linked_in{
+  font-size:18px 
 }
 .swiper {
   width: 100% !important;
@@ -97,4 +89,9 @@ i , button {
 .Toastify__toast-icon svg{
    fill: var(--main-color);
 }
-
+.z-99999999{
+  z-index: 99999999 !important;
+}
+.Nav_Links{
+  color:var(--second-color);
+}

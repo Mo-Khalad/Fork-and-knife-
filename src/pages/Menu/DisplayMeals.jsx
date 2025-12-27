@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { TransitionButton } from "../../Components/Ui/TransitionButton";
 import Aos from "aos";
+import { useTranslation } from "react-i18next"
 
 export const DisplayMeals = ({ mealData , index}) => {
+  const { t } = useTranslation()
   const { image_url, title, social_rank } = mealData;
   const id = mealData.recipe_id;
 
@@ -24,17 +26,18 @@ export const DisplayMeals = ({ mealData , index}) => {
       <div className="p-3">
         <h2 className="font-medium m-1 line-clamp-1">{title}</h2>
         <p className="line-clamp-2 p-1 md:p-1">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sed.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+        repellendus maiores perferendis eos, magnam expedita ratione
         </p>
 
         <TransitionButton
           className={"border-2 border-b-fuchsia-950"}
           path={`../../detailsMeal/${id}`}
         >
-          add to cart
+           {t('add')}
         </TransitionButton>
 
-        <span className="ms-1 text-2xl"> {social_rank.toFixed(2)}$ </span>
+        <span className="ms-1"> {social_rank.toFixed(2)}$ </span>
       </div>
     </div>
   );
