@@ -38,7 +38,7 @@ export const CheckOut = () => {
            {t("Check Out")}
           </h2>
 
-          <div className="col-span-full">
+          <div className="w-full">
             <h2 className="font-bold text-2xl text-gray-900 mt-5">
                 {t('Street address')}
             </h2>
@@ -48,7 +48,7 @@ export const CheckOut = () => {
             <p className="mt-2">{t('lng')} :  {pickLocation?.lng !== 31.2357 ? pickLocation?.lng : 31.2357}</p>
           </div>
 
-          <div className="col-span-full gap-10">
+          <div className="w-full gap-10">
             <Map position={[pickLocation?.lat, pickLocation?.lng]} zoom={16}>
               <PickLocation
                 setPickLocation={setPickLocation}

@@ -22,7 +22,7 @@ import { LanguageChangeContext } from "./Store/LanguageChangeContext";
 export const App = () => {
   const { language } = LanguageChangeContext();
   const dir = language === 'en' ? 'ltr' : 'rtl' ;
-
+  
   const routes = createBrowserRouter([
   {
       path: "",
@@ -48,6 +48,7 @@ const queryClient = new QueryClient();
         <ReactQueryDevtools />
       </QueryClientProvider>
     </div>
+     
   );
 
 };

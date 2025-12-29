@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
 import { cartContext } from "../../Store/CartContext";
-import { successfullyDone , totalPriceProduct } from "../../Logic/Logic" ;
+import { totalPriceProduct } from "../../Logic/Logic" ;
 import { useTranslation } from "react-i18next";
 export const CartItems = () => {
 const { t } = useTranslation()
@@ -50,7 +50,7 @@ const { t } = useTranslation()
                   className="fa-solid pt-1 fa-minus text-main-color hover:p-1"
                 ></i>
               </div>
-              <ButtonMain  onClick={() => removeItemToCartHandler(cartMeal)}>
+              <ButtonMain onClick={() => removeItemToCartHandler(cartMeal)}>
                 {t("remove")}
               </ButtonMain>
             </div>

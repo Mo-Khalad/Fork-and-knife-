@@ -8,7 +8,7 @@ export const Locations = () => {
   const { t } = useTranslation()
   useEffect(() => {
     Aos.init({
-      duration: 2000,
+      duration: 600,
       easing: "ease-in-out",
       once: false,  
       mirror: true,
@@ -16,12 +16,11 @@ export const Locations = () => {
   }, []);
 
   return (
-    <>
-      <div className={`w-full gird place-content-center`}>
+    <div className="w-92 overflow-x-hidden"> 
         <h2 className="text-center text-5xl font-bold main-font m-5">
          {t('Locations')}
         </h2>
-        <div className="container grid grid-cols-1 sm:grid-cols-2 gap-8 m-auto p-7">
+        <div className="container grid grid-cols-1 sm:grid-cols-2 m-auto gap-8 p-7">
           {informationLocation.map(({ name, image, Street }, index) => {
             return (
               <div
@@ -35,7 +34,7 @@ export const Locations = () => {
             );
           })}
         </div>
-      </div>
-    </>
+      
+    </div>
   );
 };

@@ -7,12 +7,15 @@ import { MainSection } from "./MainSection";
 
 export const Home = () => {
   return (
-    <div>
-      <MainSection />
-      <MealsSlider/>
-      <Chefs />
-      <Locations/>
-    </div>
+    <>
+     <MainSection/>
+     <MealsSlider/>
+     <Chefs/>
+     <Locations/>
+    </>
   );
 };
-//       <SomeMeals />
+//      
+//    
+
+//      <SomeMeals />

@@ -17,7 +17,7 @@ export const Navbar = () => {
 }
 
   return (
-    <nav className="bg-main-color p-3 fixed z-99999999 top-0 left-0 right-0">
+    <nav className="bg-main-color fixed p-3 w-full z-99999999 top-0">
       <div className="container">
         <div className="flex justify-between place-content-center">
           <div>

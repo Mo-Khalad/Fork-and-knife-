@@ -1,8 +1,8 @@
 import React from "react";
 import { LocationMarker } from "../../Components/LocationMarker";
 import { Map } from "../../Components/Map";
-import { LeafletGeocoder } from "../CheckOut/LeafletGeocoder";
 import { useTranslation } from "react-i18next";
+import '../../assets/images/chef1.webp'
 export const LocationsMap = () => {
   const { t } = useTranslation()
   const areas = [
@@ -11,9 +11,8 @@ export const LocationsMap = () => {
     { area: [30.0382, 30.9794], restaurantName: "Sheikh Zayed" },
     { area: [30.0467, 31.2347], restaurantName: "Downtown" },
   ];
-
   const position = [30.0467, 31.2347];
-
+  
   return (
     <div className="p-7 grid grid-cols-1 lg:grid-cols-2 gap-4 mt-15">
       <div>

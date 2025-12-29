@@ -45,6 +45,6 @@
     "First phone ":"First phone",
     "Last phone":"Landline phone" ,
     "Street address":"Street address" ,
-    "Establishment":"Establishmen"
-
+    "Establishment":"Establishmen" ,
+    "empty":"Your shopping basket is empty please add some meals." 
 }

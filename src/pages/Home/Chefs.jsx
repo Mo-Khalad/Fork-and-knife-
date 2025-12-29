@@ -16,7 +16,7 @@ export const Chefs = () => {
   }, []);
   return (
     <>
-      <div className={`w-full gird place-content-center`}>
+      <div className={`gird place-content-center`}>
         <h2 className="text-center text-5xl font-bold main-font m-5">{t("chefs")}</h2>
         <div className="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ls:grid-col-4 gap-4 m-auto p-7">
           {informationChefs.map(({ name, image,  information_chef }, index) => {

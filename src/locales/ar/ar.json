@@ -46,5 +46,6 @@
     "First phone":"الهاتف الأول" ,
     "Last phone":"الهاتف الارضي" ,
     "Street address":"عنوان الشارع" ,
-    "Establishment":"التأسيس"
+    "Establishment":"التأسيس",
+    "empty":"سلة التسوق الخاصة بك فارغة، يرجى إضافة بعض الوجبات"
 }

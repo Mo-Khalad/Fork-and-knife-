@@ -14,10 +14,8 @@ export const LanguageChangeContext = create(
          } else if(lng === 'ar') {
             i18n.changeLanguage('en') ;
             return { language : "en" } 
-         } 
-         
+         }  
       }),
-   
     }),
     {
       name: "language",

@@ -8,18 +8,18 @@ export const NavLinks = ({className}) => {
   return (
     <>
     <NavLink to="./" className={`mt-7 ms-3 md:mt-0 md:ms-0 ${className}`}>
-       <img src="nav logo.png" alt="nav icon" />
+       <img src="nav logo.png" alt="nav icon" className={className}/>
     </NavLink>
-    <NavLink className={({isActive})=> isActive ? 'text-second-color': className } to='./' end>
+    <NavLink className={({isActive})=> { return isActive ?`text-second-color ${className}` :className }} to='./' end>
      {t('Home')}
     </NavLink>
-    <NavLink className={({isActive})=> isActive ? 'text-second-color': className } to={'./menu'}>
+    <NavLink className={({isActive})=> { return isActive ?`text-second-color ${className}` :className }} to={'./menu'}>
      {t('Menu')}
     </NavLink>
-    <NavLink className={({isActive})=> isActive ? 'text-second-color': className } to={'./about'}>
+    <NavLink className={({isActive})=> { return isActive ?`text-second-color ${className}` : className }}  to={'./about'}>
      {t('About')}
     </NavLink>
-    <NavLink className={({isActive})=> { return isActive ? 'text-second-color': className }  } to={'./LocationsMap'}>
+    <NavLink className={({isActive})=> { return isActive ?`text-second-color ${className}` : className}}   to={'./LocationsMap'}>
      {t('Locations')}
     </NavLink>
     </>

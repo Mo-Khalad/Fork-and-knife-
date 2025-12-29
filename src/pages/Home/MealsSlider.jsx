@@ -25,12 +25,13 @@ export const MealsSlider = () => {
         }}
         pagination={false}
         modules={[EffectCoverflow, Pagination]}
+       
         className="mySwiper"
       >
         {sliderImages.map(({ image }, index) => {
           return (
             <SwiperSlide key={index}>
-              <img src={image} alt="pizza"  />
+              <img src={image} alt="pizza" />
             </SwiperSlide>
           );
         })}
