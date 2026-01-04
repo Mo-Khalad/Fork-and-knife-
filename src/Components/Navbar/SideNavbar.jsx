@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { NavLinks } from './NavLinks'
 
 export const SideNavbar = ({className , quantity}) => {
@@ -8,7 +7,7 @@ export const SideNavbar = ({className , quantity}) => {
       <nav className="md:hidden block text-center relative md:items-center cursor-pointer text-gray-200 gap-6 ">
        <NavLinks className={className}/>
       </nav>
-      <span className="md:hidden block text-gray-100 rounded-b-full absolute text-xs bg-main-color p-2 right-15">
+      <span className="md:hidden block second-font text-gray-100 rounded-b-full absolute text-xs bg-main-color p-2 right-15">
           {quantity}
       </span>
     </>

@@ -6,43 +6,42 @@ export const FindMeal = ({
   handleMealsMenuHide,
   mealName,
   setMeal,
-  mealsNames,
   searchElement,
   setSearchElement,
 }) => {
-  const { handleDataShare } = DataShareContext();
+  const { handleChooseMeal } = DataShareContext();
+  
   return (
-    <>
-      <div className="absolute top-14 left-1 h-lvh mt-1 z-30">
-        <div className="w-72 xl:w-64 text-center top-15 xl:top-17 min-h-52 sm:min-h-48 left-2 bg-main-color fixed">
-          <h2 className="text-second-color text-4xl main-font mb-8 mt-12">
-            menu
-          </h2>
-          <input
-            onChange={handleOnSearch}
-            value={searchElement}
-            placeholder="search"
-            type="text"
-            name="search"
-            className="bg-hover-color w-4/5 text-second-color h-10 mb-5 focus:outline-0 border-0 rounded-4xl text-center"
-          />
-          <i
-            className="fa-solid fa-xmark absolute text-2xl text-second-color top-5 right-4 hover:text-amber-50 transition duration-700"
-            onClick={handleMealsMenuHide}
-          ></i>
-        </div>
+    <div className='w-60 fixed h-lvh left-2 top-16 z-9999999'>
+    <div className='w-60 text-center bg-main-color h-48 place-content-center'>
+    <h2 className="text-second-color text-4xl main-font mb-8">
+         menu
+       </h2>
+       <input
+         onChange={handleOnSearch}
+         value={searchElement}
+         placeholder="search"
+         type="text"
+         name="search"
+         className="bg-hover-color w-4/5 text-second-color h-10 mb-5 focus:outline-0 border-0 rounded-4xl text-center"
+       />
+       <i
+         className="fa-solid fa-xmark absolute text-2xl text-second-color top-5 right-4 hover:text-amber-50 transition duration-700"
+         onClick={handleMealsMenuHide}
+       ></i>
 
-        <div className="overflow-y-auto min-h-3/5 background-menu text-second-color left-2 fixed top-60 bottom-1 w-72 xl:w-64 z-20">
-          <ul className="p-4 text-center relative text-2xl text-second-color second-font">
-            {meal.length === 0 ? (
+    </div>
+    <div className="w-60 overflow-y-scroll background-menu h-8/12 xl:h-96 text-second-color left-2">
+       <ul className="p-4 text-center text-2xl text-second-color second-font">
+       {meal.length === 0 ? (
               <li className="mt-1 font-bold"> Meal not available </li>
             ) : (
               meal.map((menuMealName, index) => (
                 <li
                   key={index}
                   onClick={() => {
-                    handleDataShare(menuMealName);
-                    setMeal(mealsNames);
+                    handleChooseMeal(menuMealName);
+                    setMeal('meal');
                     setSearchElement("");
                   }}
                   className={`m-3 cursor-pointer hover:bg-hover-color transition duration-700 ${
@@ -53,9 +52,9 @@ export const FindMeal = ({
                 </li>
               ))
             )}
-          </ul>
-        </div>
-      </div>
-    </>
+       </ul>
+     </div>
+  </div>
+  
   );
 };

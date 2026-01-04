@@ -1,11 +1,11 @@
 import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 
-export const Map = ({ children , position , zoom}) => {  
+export const Map = ({ children , position , zoom , className}) => {  
  
   return (
      <MapContainer
-     className="mt-8 h-2"
+     className={`mt-8 h-2 ${className}`}
      center={position}
      zoom={zoom}
      scrollWheelZoom={false}

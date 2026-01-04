@@ -1,6 +1,5 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -31,7 +30,7 @@ export const MealsSlider = () => {
         {sliderImages.map(({ image }, index) => {
           return (
             <SwiperSlide key={index}>
-              <img src={image} alt="pizza" />
+              <img src={image} alt="pizza" className="h-48"/>
             </SwiperSlide>
           );
         })}

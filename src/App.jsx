@@ -3,7 +3,7 @@ import { Home } from "./pages/Home/Home.jsx";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import "leaflet/dist/leaflet.css";
-import 'animate.css';
+//import 'animate.css';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { About } from "./pages/About/About.jsx";
@@ -16,8 +16,10 @@ import { LayOut } from "./Components/LayOut/LayOut";
 import { QueryClient } from "@tanstack/react-query";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { Error } from "./pages/Error/Error";
-import { LanguageChangeContext } from "./Store/LanguageChangeContext";
+import { MainError } from "./pages/Error/MainError";
+import { NotFound } from "./pages/Error/NotFound";
+import { ToastContainerSetting } from './Components/ToastContainerSetting'
+import { LanguageChangeContext } from "./Store/LanguageChangeContext"
 
 export const App = () => {
   const { language } = LanguageChangeContext();
@@ -25,27 +27,34 @@ export const App = () => {
   
   const routes = createBrowserRouter([
   {
-      path: "",
-      element: <LayOut />, errorElement : <Error/>,
+      path: "/",
+      element: <LayOut />,
+       errorElement : <MainError/> ,
         children: [
-          { path: "", element: <Home />, index: true },
+          { path:'' , index:true , element: <Home /> },
           { path: "about", element: <About /> },
           { path: "menu", element: <Menu /> },
           { path: "cart", element: <Cart /> },
           { path: "checkOut", element: <CheckOut /> },
           { path: "DetailsMeal/:id", element: <DetailsMeal /> },
           { path: "LocationsMap", element: <LocationsMap /> },
- ] }  ],
+          { path: "*", element:  <NotFound/> },
+ ] 
+  }
+  
+],
+
 );
 
 const queryClient = new QueryClient();
 
   return (
-    <div dir={dir}>
+    <div dir={dir} className={language === 'ar' ? 'cairo-font' :''}>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={routes}>
         </RouterProvider>
         <ReactQueryDevtools />
+        <ToastContainerSetting/>
       </QueryClientProvider>
     </div>
      

@@ -2,13 +2,13 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
 import { cartContext } from "../../Store/CartContext";
-import { ToastContainer } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import { fetchDetailsMeal } from "../../util/Http";
 import { DisplayOtherMeals } from "./DisplayOtherMeals";
 import { DataShareContext } from "../../Store/DataShareContext";
 import { successfullyDone } from "../../Logic/Logic";
 import { useTranslation } from "react-i18next" ;
+import { SideCart } from "../Cart/SideCart";
 
 export const DetailsMeal = () => {
   const { addItemToCartHandler } = cartContext()
@@ -36,7 +36,7 @@ export const DetailsMeal = () => {
           <img
             src={mealDetails?.image_url}
             alt={mealDetails?.title}
-            className="place-self-center w-full"
+            className="place-self-center w-full max-h-4/6 h-4/6"
           />
         </div>
 
@@ -58,7 +58,7 @@ export const DetailsMeal = () => {
           </p>
 
           {mealDetails?.ingredients.map((ingredient , index) => (
-            <h2 className="mt-2 line-clamp-1" key={index}>
+            <h2 className="mt-2 line-clamp-1 second-font " key={index}>
               <span className="font-bold text m-3">{index + 1}</span>
               {ingredient}
             </h2>
@@ -73,7 +73,7 @@ export const DetailsMeal = () => {
         </div>
       </div>
       <DisplayOtherMeals />
-      <ToastContainer />
+      <SideCart/>
     </>
   );
 };

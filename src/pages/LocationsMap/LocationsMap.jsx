@@ -3,6 +3,7 @@ import { LocationMarker } from "../../Components/LocationMarker";
 import { Map } from "../../Components/Map";
 import { useTranslation } from "react-i18next";
 import '../../assets/images/chef1.webp'
+import { SideCart } from "../Cart/SideCart";
 export const LocationsMap = () => {
   const { t } = useTranslation()
   const areas = [
@@ -25,9 +26,10 @@ export const LocationsMap = () => {
           </div>
         ))}
       </div>
-        <Map position={position} zoom={10}>
+        <Map position={position} zoom={9}>
          <LocationMarker areas={areas}/> 
        </Map>
+       <SideCart/>
     </div>
   );
 };

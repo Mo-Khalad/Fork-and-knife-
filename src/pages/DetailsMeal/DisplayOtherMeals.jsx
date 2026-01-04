@@ -3,18 +3,30 @@ import { fetchMeals } from "../../util/Http";
 import { useQuery } from "@tanstack/react-query";
 import { DataShareContext } from "../../Store/DataShareContext";
 import { TransitionButton } from "../../Components/Ui/TransitionButton";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
+import { cartContext } from "../../Store/CartContext";
+import { ButtonMain } from "../../Components/Ui/ButtonMain";
+import { successfullyDone } from "../../Logic/Logic";
+import { ShowModelSideCart } from "../../Store/ShowModelSideCart";
+import { Link } from "react-router-dom";
 
 export const DisplayOtherMeals = () => {
   const { mealName } = DataShareContext();
-  const { t } = useTranslation()
- 
+  const { t } = useTranslation();
+  const { addItemToCartHandler } = cartContext();
   const { data } = useQuery({
     queryKey: ["meal", mealName],
     queryFn: () => fetchMeals({ mealName: mealName, method: "get_meals" }),
     staleTime: Infinity,
   });
   const dataOtherMeals = data?.data?.recipes;
+  const { handleSideCartDisplay } = ShowModelSideCart();
+  const { cartMeals } = cartContext();
+  const handleAddToCart = (mealData) => {
+    successfullyDone(t("successfully Added"));
+    addItemToCartHandler(mealData);
+    cartMeals.length === 0 && handleSideCartDisplay();
+  };
 
   return (
     <>
@@ -24,43 +36,48 @@ export const DisplayOtherMeals = () => {
 
       <div className="grid grid-cols-8 p-5 gap-20">
         {dataOtherMeals !== undefined &&
-          dataOtherMeals.map(
-            ({ image_url, title, social_rank, recipe_id }, index) => {
-              if (index < 4) {
-                return (
-                  <div
-                    key={index}
-                    className="bg-second-color col-span-5 sm:col-span-4 md:col-span-2 main-shadow rounded-main-radius min-90"
-                  >
-                    <div>
+          dataOtherMeals.map((dataOtherMeal, index) => {
+            if (index < 4) {
+              return (
+                <div
+                  key={index}
+                  className="bg-second-color second-font col-span-5 sm:col-span-4 md:col-span-2 main-shadow rounded-main-radius min-90"
+                >
+                  <div>
+                    <Link to={`../DetailsMeal/${ dataOtherMeal.recipe_id}`}>
                       <img
-                        src={image_url}
-                        alt={title}
+                        src={dataOtherMeal.image_url}
+                        alt={dataOtherMeal.title}
                         className="min-h-50 h-50 w-full"
                       />
-                    </div>
-
-                    <div className="p-3">
-                      <h2 className="font-medium m-1 line-clamp-1">{title}</h2>
-                      <p className="line-clamp-2 p-1">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Tenetur, sed.
-                      </p>
-
-                      <TransitionButton
-                        path={`../detailsMeal/${recipe_id}`}
-                        className={"w-44 border-2 border-b-fuchsia-950"}
-                      >
-                        {t('add')}
-                      </TransitionButton>
-
-                      <span className="ms-1"> {social_rank.toFixed(2)}$ </span>
-                    </div>
+                    </Link>
                   </div>
-                );
-              }
+
+                  <div className="p-3">
+                    <h2 className="font-medium m-1 line-clamp-1">
+                      {dataOtherMeal.title}
+                    </h2>
+                    <p className="line-clamp-2 p-1">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Tenetur, sed.
+                    </p>
+
+                    <ButtonMain
+                      onClick={() => handleAddToCart(dataOtherMeal)}
+                      className="w-42"
+                    >
+                      {t("add")}
+                    </ButtonMain>
+
+                    <span className="ms-1">
+                      {" "}
+                      {dataOtherMeal.social_rank.toFixed(2)}${" "}
+                    </span>
+                  </div>
+                </div>
+              );
             }
-          )}
+          })}
       </div>
     </>
   );

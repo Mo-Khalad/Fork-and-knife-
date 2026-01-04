@@ -16,7 +16,7 @@ export const Locations = () => {
   }, []);
 
   return (
-    <div className="w-92 overflow-x-hidden"> 
+    <div className="w-full overflow-x-hidden"> 
         <h2 className="text-center text-5xl font-bold main-font m-5">
          {t('Locations')}
         </h2>

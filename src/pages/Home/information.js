@@ -11,6 +11,18 @@ import Sheikh_Zayed from "../../assets/images/Sheikh Zayed.webp"
 import Rehab from '../../assets/images/Rehab.webp';
 import Downtown from '../../assets/images/Downtown.webp';
 //slider images
+import fish from '../../assets/images/fish.webp'
+import curry from '../../assets/images/curry.webp'
+import lamb from '../../assets/images/lamb.webp'
+import beef from '../../assets/images/beef.webp'
+import crab from '../../assets/images/crab.webp'
+import donuts from '../../assets/images/donuts.webp'
+import salami from '../../assets/images/salami.webp'
+import bacon from '../../assets/images/bacon.webp'
+import marzipan from '../../assets/images/marzipan.webp'
+import turkey from '../../assets/images/turkey.webp'
+import chili from '../../assets/images/chili.webp'
+import pizza from '../../assets/images/pizza.webp'
 
 // information chefs 
 const information_chef ="informationChefs";
@@ -23,15 +35,6 @@ export const informationChefs = [
     { name: "Ibrahim", image: chef5, information_chef },
     { name: "mohmed", image: chef6, information_chef },
 ];
-/*
-  
-
-
-     "one":" Our first restaurant opened in 2000 in Sheikh Zayed and has become one of the most 
-        famous restaurants in Sheikh Zayed. This is thanks to providing the best food and service.
-        We employ some of the most famous chefs in Egypt, and we look forward to opening more branches
-        around the world. " 
-*/
 //information locations
 const Street ="Street";
 
@@ -44,7 +47,7 @@ export const informationLocation = [
 
 // sliderImages
 
-export const sliderImages = [ {image: '/pizza.avif'} , {image: '/pizza.avif'} , {image: '/pizza.avif'},
-{image: '/pizza.avif'},{image: '/pizza.avif'},{image: '/pizza.avif'},{image: '/pizza.avif'},
-{image: '/pizza.avif'},{image: '/pizza.avif'},{image: '/pizza.avif'},{image: '/pizza.avif'},
-{image: '/pizza.avif'}]
+export const sliderImages = [ {image: bacon} , {image: pizza} , {image: marzipan},
+{image: fish },{image: beef},{image: salami},{image: turkey},
+{image: curry},{image: donuts},{image: crab},{image: chili},
+{image: lamb}]

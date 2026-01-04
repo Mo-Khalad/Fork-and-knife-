@@ -13,8 +13,6 @@ export const totalCartMeals = (meals)=> meals.reduce((totalNumberOfItems, CartIt
 }, 0);
 
 export const successfullyDone = (message)=> toast.success( message , {
-    position: "top-right",
-    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: false,
     pauseOnHover: true,
@@ -22,4 +20,5 @@ export const successfullyDone = (message)=> toast.success( message , {
     progress: undefined,
     theme: "light",
     });
+
 

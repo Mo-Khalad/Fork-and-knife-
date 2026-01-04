@@ -1,7 +1,7 @@
 import React from "react";
 import { Marker, Popup } from "react-leaflet";
 import L  from 'leaflet'
-import googleMapIcon from "../assets/images/google-maps.png"
+import googleMapIcon from "../assets/images/google-maps.webp"
 export const LocationMarker = ({ areas }) => {
  
   return (

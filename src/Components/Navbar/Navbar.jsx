@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { SideNavbar } from "./SideNavbar";
-import { NavLink } from "react-router-dom";
 import { LanguageChangeContext } from "../../Store/LanguageChangeContext";
 import { NavLinks } from './NavLinks'
 import { useTranslation } from "react-i18next";
-import { totalCartMeals } from "../../Logic/Logic";
+import { successfullyDone , totalCartMeals } from "../../Logic/Logic";
 import { cartContext } from "../../Store/CartContext"
+import { ShowModelSideCart } from "../../Store/ShowModelSideCart";
 export const Navbar = () => {
   const { language , handleLanguageChange } = LanguageChangeContext();
-  const [displaySideNavbar , setDisplaySideNavbar] = useState(false);
+  const [ displaySideNavbar , setDisplaySideNavbar] = useState(false);
   const { i18n } = useTranslation();
   const { cartMeals } = cartContext()
+  const { handleSideCartDisplay } = ShowModelSideCart()
 
   const handleToggleSideNavbar =()=>{
   setDisplaySideNavbar(!displaySideNavbar)
 }
-
   return (
     <nav className="bg-main-color fixed p-3 w-full z-99999999 top-0">
       <div className="container">
@@ -33,13 +33,15 @@ export const Navbar = () => {
           </div>
 
           <div>
-           <NavLink to={'../../cart'}><i className="fa-solid fa-bag-shopping cursor-pointer text-gray-200 hover:text-gray-50 transition duration-700 text-3xl"></i></NavLink> 
-            <span className="md:block hidden text-gray-100 rounded-b-full absolute top-13 text-center w-7 text-xs bg-main-color p-2 right-15">
-             { totalCartMeals(cartMeals) }
+           <i onClick={ () =>  cartMeals.length ? handleSideCartDisplay() : 
+            successfullyDone('cart is empty') 
+            } className="fa-solid fa-bag-shopping cursor-pointer text-gray-200 hover:text-gray-50 transition duration-700 text-3xl"></i>
+            <span className="md:block second-font hidden text-gray-100 rounded-b-full absolute top-13 text-center w-7 text-xs bg-main-color p-2 right-15">
+             { totalCartMeals(cartMeals) < 100 ? totalCartMeals(cartMeals) : '99' }
             </span>
             <button 
             onClick={()=>handleLanguageChange(language , i18n)} 
-            className="border border-second-color max-w-20 w-24 text-second-color p-1 ms-3">
+            className="border border-second-color second-font max-w-20 w-24 text-second-color p-1 ms-3">
               {language ==="en" ? "ar" :"en"}
             </button>
           </div>

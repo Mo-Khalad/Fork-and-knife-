@@ -1,11 +1,10 @@
-/* cursor: url("./assets/images/icon-google.png") ,auto !important; */
 html{
   scrollbar-color: var(--main-color) rgba(255, 254, 254, 0.98);
 }
 body{
   background-color: rgb(221 , 220 , 218);
   overflow-x:hidden;
-}
+}  
 :root{
   --main-color:rgba( 109,  9 , 51 , 0.966) ;
   --second-color:rgb(212, 212, 212);
@@ -15,13 +14,16 @@ body{
   --color-main-color: var(--main-color);
   --color-second-color: var(--second-color);
   --radius-main-radius:0.2rem; 
-  --color-hover-color:rgba(255, 255, 255, 0.075) ;
+  --color-hover-color:rgba(88, 78, 78, 0.07) ;
   --color-meals-slider:rgb(63, 7, 30) ;
   --border-main-color: 1px solid #222;
 }
 .leaflet-container{
   width: 100%;
   height: 60vh ;
+}
+.locationMap{
+  cursor: url("./assets/images/pin.webp") , auto !important;
 }
 li{
  list-style-type: none;
@@ -35,6 +37,11 @@ li{
   font-family: "Dosis", sans-serif;
   font-optical-sizing: auto;
   font-weight:300;
+  font-style: normal;
+}
+.cairo-font{
+  font-family: "Playwrite NZ Guides", cursive;
+  font-weight: 400;
   font-style: normal;
 }
 .main-shadow{
@@ -92,7 +99,18 @@ i , button {
 .z-99999999{
   z-index: 9999999 !important;
 }
+.z-9999999{
+  z-index:9999999 !important;
+  }
+.z-999999{
+z-index:999999 !important;
+}
 .Toastify__toast-container{
   z-index: 99999999 !important;
 }
-
+.btn-showCart{
+  color: var(--main-color) !important;
+}
+.bg-hover-color{
+  background-color: #d8d8d818;
+}

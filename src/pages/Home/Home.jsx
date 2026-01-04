@@ -4,18 +4,17 @@ import { Locations } from "./Locations";
 import { MealsSlider } from "./MealsSlider";
 import { SomeMeals } from "./SomeMeals";
 import { MainSection } from "./MainSection";
+import { SideCart } from "../Cart/SideCart";
 
 export const Home = () => {
+  
   return (
     <>
      <MainSection/>
      <MealsSlider/>
      <Chefs/>
      <Locations/>
+     <SideCart/>
     </>
   );
 };
-//      
-//    
-
-//      <SomeMeals />

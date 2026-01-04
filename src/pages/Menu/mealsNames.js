@@ -1,4 +1,5 @@
 export const mealsNames = [
+    "pizza",  
     "ribs",
     "salami",
     "pepperoni",
@@ -25,7 +26,6 @@ export const mealsNames = [
     "ketchup",
     "tacos",
     "chips",
-    "pizza",
     "pasta",
     "pudding",
     "cake",

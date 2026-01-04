@@ -26,7 +26,7 @@ export const Footer = () => {
             />
           </ul>
 
-         <ul className="grid col-span-2 xl:col-span-1 gap-2 mt-2 ms-5 sm:ms-15 xl:ms-2"> 
+         <ul className="grid col-span-2 xl:col-span-1 gap-2 mt-2 ms-5 sm:ms-15 xl:ms-2 second-font"> 
             <Li contents={["Contact"]} />
             <li className="m-2 mt-5">
               <i className="icon-phone fa-solid fa-phone me-2"></i>

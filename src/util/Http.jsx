@@ -1,25 +1,23 @@
+
 import axios from "axios";
-//const baseServerUrl
-//process.env.REACT_APP_Base_API_URl
-//
+
+const baseServerUrl = import.meta.env.VITE_Base_API_URL 
 export const fetchMeals = async ({ method , mealName }) => { 
-  
-  const extension =  method === "get_meals" ? 'search?q' : "get?rId"
   try {
+  const extension =  method === "get_meals" ? 'search?q' : "get?rId"
     const responsive = await axios(
-      `https://forkify-api.herokuapp.com/api/${extension}=${mealName}`
-    );    
-    console.log(responsive); 
-    return responsive;
-  } catch (error) {
-    return error;
+      `${baseServerUrl}${extension}=${mealName}`
+    ); 
+  return responsive;
+} catch(error) {  
+    return error 
   }
 };
 
 export const fetchDetailsMeal  = async (id) => {
   try {
     const responsive = await axios(
-      `https://forkify-api.herokuapp.com/api/get?rId=${id}`
+      `${baseServerUrl}get?rId=${id}`
     );    
     return responsive;
   } catch (error) {

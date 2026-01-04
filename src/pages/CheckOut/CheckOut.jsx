@@ -5,6 +5,7 @@ import { Map } from "../../Components/Map";
 import { PickLocation } from "../../Components/PickLocation";
 import { LeafletGeocoder } from "./LeafletGeocoder";
 import { useTranslation } from "react-i18next" ;
+import { SideCart } from "../Cart/SideCart";
 
 export const CheckOut = () => {
   const { t } = useTranslation()
@@ -49,7 +50,7 @@ export const CheckOut = () => {
           </div>
 
           <div className="w-full gap-10">
-            <Map position={[pickLocation?.lat, pickLocation?.lng]} zoom={16}>
+            <Map position={[pickLocation?.lat, pickLocation?.lng]} zoom={16} className={'locationMap'}>
               <PickLocation
                 setPickLocation={setPickLocation}
                 pickLocation={pickLocation}
@@ -190,6 +191,7 @@ export const CheckOut = () => {
           </form>
         </div>
       </div>
+      <SideCart/>
     </div>
   );
 };

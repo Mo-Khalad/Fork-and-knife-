@@ -16,14 +16,15 @@
     "Downtown" : "Downtown",
     "Text About": "Our October branch opened in 2005 after the success of our first restaurant in Sheikh Zayed. Following the success of our first branch in October, and later in Rehab and Downtown Cairo, we expanded to serve a growing customer base. This location was created to make it easier for customers who live far away or don't have time to come to us. We deliver food to all parts of Cairo and Giza quickly, and the food is always delicious. We are honored to serve you 24 hours a day." ,
     "successfully Added" :"successfully added in cart",
-    "successfully remove":"successfully remve in cart" ,
+    "successfully Remove":"successfully remove in cart" ,
+    "succussFully All Remove":"succussFully all remove in cart" ,
     "add":"add to cart" ,
     "includes": "The price includes tax" ,
     "Total Meals Quantity":"Total Meals Quantity",
     "Total Price":"Total Price" ,
     "Check Out":"Check Out" ,
     "remove" :"remove" ,
-    "All Delete" :"Delete All" ,
+    "All Delete" :"remove All" ,
     "My Cart":"My Cart" ,
     "chefs" :"Chefs" ,
     "meals" : "meals" ,
@@ -46,5 +47,6 @@
     "Last phone":"Landline phone" ,
     "Street address":"Street address" ,
     "Establishment":"Establishmen" ,
-    "empty":"Your shopping basket is empty please add some meals." 
+    "empty":"Your shopping basket is empty please add some meals" ,
+    "show Cart" : "show cart"  
 }
