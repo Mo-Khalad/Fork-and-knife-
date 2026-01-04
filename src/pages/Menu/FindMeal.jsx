@@ -41,7 +41,7 @@ export const FindMeal = ({
                   key={index}
                   onClick={() => {
                     handleChooseMeal(menuMealName);
-                    setMeal('meal');
+                    setMeal(meal);
                     setSearchElement("");
                   }}
                   className={`m-3 cursor-pointer hover:bg-hover-color transition duration-700 ${
