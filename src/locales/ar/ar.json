@@ -38,6 +38,7 @@
     "lat":"خطوط العرض",
     "lng":"خطوط الطول",
     "Last name":"اسم العائلة",
+    "First name":"الاسم الاول" ,
     "Email address":"عنوان البريد الإلكتروني",
     "Country":"دولة",
     "United States":"الولايات المتحدة",
@@ -48,5 +49,11 @@
     "Street address":"عنوان الشارع" ,
     "Establishment":"التأسيس",
     "empty":"سلة التسوق الخاصة بك فارغة، يرجى إضافة بعض الوجبات" ,
-    "show Cart":"عرض العربة"
+    "show Cart":"عرض العربة" ,
+    "successfully" :"تم إتمام عملية الشراء بنجاح" ,
+    "message Cart Is Empty" : "العربة فارغة" ,
+    "Looks like you re not connected to the internet":"يبدو أنك غير متصل بالإنترنت" ,
+    "Checking the network cables, modem, and router" :"فحص كابلات الشبكة والمودم وجهاز التوجيه" ,
+    "Reconnecting to Wi-Fi" :"إعادة الاتصال بشبكة Wi-Fi" ,
+    "No internet" :"لا يوجد إنترنت"
 }

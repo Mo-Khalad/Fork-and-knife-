@@ -2,7 +2,7 @@ import React from "react";
 import { Model } from "../../Components/Ui/Model";
 import { useTranslation } from "react-i18next";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
-import { cartContext } from "../../Store/CartContext";
+import { CartContext } from "../../Store/CartContext";
 import {
   totalPriceProduct,
   totalPriceProducts,
@@ -11,36 +11,40 @@ import {
 } from "../../Logic/Logic";
 import { ShowModelSideCart } from "../../Store/ShowModelSideCart";
 import { TransitionButton } from "../../Components/Ui/TransitionButton";
+import { LanguageChangeContext } from "../../Store/LanguageChangeContext"
 
 export const SideCart = () => {
   const { t } = useTranslation();
   const { showSideCart, handleSideCartHide } = ShowModelSideCart();
+  const { language } = LanguageChangeContext();
+  const dir = language === 'en' ? 'ltr' : 'rtl' ;
   const {
     addItemToCartHandler,
     decrementItemToCartHandler,
     cartMeals,
     removeItemToCartHandler,
-  } = cartContext();
+  } = CartContext();
 
   const handleItemRemoveToCart = (id) => {
     successfullyDone(t("successfully Remove"));
     removeItemToCartHandler(id);
     cartMeals.length === 1 ? handleSideCartHide() : "";
   };
+  
 
   return (
     <>
       {cartMeals.length ? (
         <Model open={showSideCart}>
-          <div className="w-92 fixed top-20 right-5 h-84  z-999999">
-            <div className="w-full text-center bg-main-color h-14 p-2  place-content-center">
+          <div className="w-92 fixed top-24 right-3 h-84  z-999999">
+            <div className="w-full text-center bg-main-color h-13 p-1  place-content-center">
               <h3 className="text-3xl text-second-color">{t("My Cart")}</h3>
             </div>
             <i
               className="fa-solid fa-xmark absolute text-2xl text-second-color top-5 right-4 hover:text-amber-50 transition duration-700"
               onClick={handleSideCartHide}
             ></i>
-            <div className="w-full grid-cols-2 overflow-y-auto bg-amber-50 h-72 text-main-color left-2 ">
+            <div className="w-full grid-cols-2 overflow-y-auto bg-amber-50 h-70 text-main-color left-2 ">
               {cartMeals.map((cartMeal) => {
                 return (
                   <div
@@ -96,23 +100,29 @@ export const SideCart = () => {
             </div>
 
             <div className="w-full bg-main-color place-content-center">
-              <div className="font-bold m-auto w-80 text-3xl text-second-color second-font my-2">
-                <span className="p-2 w-40"> {t("Total Price")} </span>
-                <span> : </span>
-                <span className="p-2">{totalPriceProducts(cartMeals)}</span>
+
+            <div  dir={dir} className="grid text-3xl grid-cols-9 text-center m-auto font-bold text-second-color second-font my-2">
+               <span className='grid col-span-4 text-center bg-second-colo ms-5'>
+                  {t("Total Price")}
+                </span>
+                <span className="mx-2 grid col-span-1"> : </span>
+                   <span className='grid col-span-2'> {totalPriceProducts(cartMeals)}$ </span>
+
               </div>
+ 
 
               <p className="text-center font-extralight text-1xl text-second-color">
                 {t("includes")}
               </p>
-              <hr className="h-0.5 m-5 bg-second-color " />
-              <div className="w-44 bg-second-colo m-auto font-bold text-second-color second-font my-2">
-                <span className="bg-second-colo">
+              <hr className="h-0.5 m-5 bg-second-color" />
+              <div dir={dir} className="grid grid-cols-9 text-center font-bold text-second-color second-font my-2">
+              <span className='grid col-span-4 text-center'>
                   {t("Total Meals Quantity")}
                 </span>
-                <span className="mx-2"> : </span>
-                <span> {totalCartMeals(cartMeals)} </span>
+                <span className="mx-2 grid col-span-1"> : </span>
+                <span className='grid col-span-1'> {totalCartMeals(cartMeals)} </span>
               </div>
+           
               <TransitionButton
                 path={"../cart"}
                 className={"w-88 m-2 btn-showCart bg-second-color"}

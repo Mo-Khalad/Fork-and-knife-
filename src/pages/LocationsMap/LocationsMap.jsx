@@ -4,8 +4,12 @@ import { Map } from "../../Components/Map";
 import { useTranslation } from "react-i18next";
 import '../../assets/images/chef1.webp'
 import { SideCart } from "../Cart/SideCart";
+import { useNetwork } from '../../hooks/useNetwork';
+import { NetworkError } from '../Error/NetworkError';
+
 export const LocationsMap = () => {
   const { t } = useTranslation()
+  const isOnline = useNetwork()
   const areas = [
     { area: [30.0646, 31.4882], restaurantName: "October" },
     { area: [29.9611, 30.9296], restaurantName: "Rehab" },
@@ -15,21 +19,28 @@ export const LocationsMap = () => {
   const position = [30.0467, 31.2347];
   
   return (
-    <div className="p-7 grid grid-cols-1 lg:grid-cols-2 gap-4 mt-15">
-      <div>
-        {areas.map(({ restaurantName }, index) => (
+    <> { 
+      isOnline ?  
+      <div className="p-7 grid grid-cols-1 lg:grid-cols-2 gap-4 mt-15">
+        <div>
+           {areas.map(({ restaurantName }, index) => (
           <div key={index}>
             <h1 className="font-black text-2xl p-4 main-font">
               {t(restaurantName)}
             </h1>
             <p className="p-2 ms-5">{t('Street')}</p>
           </div>
-        ))}
-      </div>
+           ))}
+        </div>
+
         <Map position={position} zoom={9}>
          <LocationMarker areas={areas}/> 
-       </Map>
-       <SideCart/>
-    </div>
-  );
+        </Map>
+        <SideCart/>
+      </div>
+      : <NetworkError/>
+    }
+    </>
+    )
+
 };

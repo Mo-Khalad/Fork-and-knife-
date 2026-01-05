@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { DataShareContext } from "../../Store/DataShareContext";
 import { TransitionButton } from "../../Components/Ui/TransitionButton";
 import { useTranslation } from "react-i18next";
-import { cartContext } from "../../Store/CartContext";
+import { CartContext } from "../../Store/CartContext";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
 import { successfullyDone } from "../../Logic/Logic";
 import { ShowModelSideCart } from "../../Store/ShowModelSideCart";
@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export const DisplayOtherMeals = () => {
   const { mealName } = DataShareContext();
   const { t } = useTranslation();
-  const { addItemToCartHandler } = cartContext();
+  const { addItemToCartHandler , cartMeals } = CartContext();
   const { data } = useQuery({
     queryKey: ["meal", mealName],
     queryFn: () => fetchMeals({ mealName: mealName, method: "get_meals" }),
@@ -21,7 +21,6 @@ export const DisplayOtherMeals = () => {
   });
   const dataOtherMeals = data?.data?.recipes;
   const { handleSideCartDisplay } = ShowModelSideCart();
-  const { cartMeals } = cartContext();
   const handleAddToCart = (mealData) => {
     successfullyDone(t("successfully Added"));
     addItemToCartHandler(mealData);

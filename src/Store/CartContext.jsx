@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export const cartContext = create(
+export const CartContext = create(
   persist(
     (set) => ({
       cartMeals: [],

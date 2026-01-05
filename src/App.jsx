@@ -3,7 +3,6 @@ import { Home } from "./pages/Home/Home.jsx";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import "leaflet/dist/leaflet.css";
-//import 'animate.css';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { About } from "./pages/About/About.jsx";
@@ -20,6 +19,7 @@ import { MainError } from "./pages/Error/MainError";
 import { NotFound } from "./pages/Error/NotFound";
 import { ToastContainerSetting } from './Components/ToastContainerSetting'
 import { LanguageChangeContext } from "./Store/LanguageChangeContext"
+import { successfullyDone } from './Logic/Logic'
 
 export const App = () => {
   const { language } = LanguageChangeContext();
@@ -41,7 +41,6 @@ export const App = () => {
           { path: "*", element:  <NotFound/> },
  ] 
   }
-  
 ],
 
 );
@@ -49,6 +48,7 @@ export const App = () => {
 const queryClient = new QueryClient();
 
   return (
+   <>
     <div dir={dir} className={language === 'ar' ? 'cairo-font' :''}>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={routes}>
@@ -56,8 +56,8 @@ const queryClient = new QueryClient();
         <ReactQueryDevtools />
         <ToastContainerSetting/>
       </QueryClientProvider>
-    </div>
-     
+    </div> 
+   </>   
   );
 
 };

@@ -3,7 +3,7 @@ import { TransitionButton } from "../../Components/Ui/TransitionButton";
 import Aos from "aos";
 import { useTranslation } from "react-i18next"
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
-import { cartContext } from "../../Store/CartContext";
+import { CartContext } from "../../Store/CartContext";
 import { successfullyDone } from "../../Logic/Logic";
 import { ShowModelSideCart } from "../../Store/ShowModelSideCart";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ export const DisplayMeals = ({ mealData , index}) => {
   const {
     addItemToCartHandler,
     cartMeals
-  } = cartContext();
+  } = CartContext();
   const { image_url, title, social_rank } = mealData;
   const id = mealData.recipe_id;
 

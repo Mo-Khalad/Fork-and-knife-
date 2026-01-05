@@ -48,5 +48,7 @@
     "Street address":"Street address" ,
     "Establishment":"Establishmen" ,
     "empty":"Your shopping basket is empty please add some meals" ,
-    "show Cart" : "show cart"  
+    "show Cart" : "show cart" ,
+    "successfully" :"Your purchase was completed successfully" ,
+    "message Cart Is Empty" :"Cart Is Empty"
 }

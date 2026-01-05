@@ -9,12 +9,16 @@ import menu from "../../assets/images/menu.webp";
 import { Loading } from "../../Components/Loading";
 import { Model } from "../../Components/Ui/Model";
 import { SideCart } from "../Cart/SideCart";
+import { useNetwork } from '../../hooks/useNetwork';
+import { NetworkError } from '../Error/NetworkError';
 
 export const Menu = () => {
   const [meal, setMeal] = useState(mealsNames);
   const [show, setShow] = useState(false);
   const [searchElement, setSearchElement] = useState("");
   const { mealName } = DataShareContext();
+  const isOnline = useNetwork() 
+
   const handleMealsMenuDisplay = () => {
     setShow(true);
   };
@@ -37,6 +41,8 @@ export const Menu = () => {
   };
 
   return (
+    <>
+    {isOnline ? 
     <>
       {isFetching ? (
         <Loading />
@@ -86,6 +92,9 @@ export const Menu = () => {
           </div>
         </div>
       )}
+    </>  
+    : <NetworkError/>}
+     
     </>
   );
 };

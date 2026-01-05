@@ -1,6 +1,6 @@
 import React from "react";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
-import { cartContext } from "../../Store/CartContext";
+import { CartContext } from "../../Store/CartContext";
 import { successfullyDone, totalPriceProduct } from "../../Logic/Logic" ;
 import { useTranslation } from "react-i18next";
 import { ShowModelSideCart } from "../../Store/ShowModelSideCart";
@@ -11,14 +11,13 @@ const { t } = useTranslation()
     decrementItemToCartHandler,
     cartMeals,
     removeItemToCartHandler,
-  } = cartContext();
+  } = CartContext();
   const { handleSideCartHide } = ShowModelSideCart();
 
   const handleItemRemoveToCart = (cartMeal) => {
     successfullyDone("successfully Remove");
     removeItemToCartHandler(cartMeal);
     cartMeals.length === 1 ? handleSideCartHide() : "";
-
   };
 
   return (
@@ -27,7 +26,7 @@ const { t } = useTranslation()
             return (
               <div
                 key={cartMeal.recipe_id}
-                className=" w-3xl rounded-main-radius grid grid-cols-8 p-1 m-2 bg-second-color"
+                className="w-3xl second-font rounded-main-radius grid grid-cols-8 p-1 m-2 bg-second-color"
               >
                 <div className="grid grid-cols-5 col-span-6 m-3">
                   <div>
