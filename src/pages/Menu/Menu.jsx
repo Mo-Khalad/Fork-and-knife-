@@ -27,7 +27,7 @@ export const Menu = () => {
   };
   const { data, isFetching } = useQuery({
     queryKey: ["meal", mealName],
-    queryFn: () => fetchMeals({ mealName: mealName, method: "get_meals" }),
+    queryFn: () => fetchMeals({ mealName: mealName }),
     staleTime: Infinity,
     gcTime: Infinity,
     enabled: !!mealName,

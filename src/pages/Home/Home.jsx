@@ -19,6 +19,7 @@ export const Home = () => {
       <MealsSlider/>
       <Chefs/>
       <Locations/>
+      <SomeMeals/>
       <SideCart/>      
      </> : <NetworkError/>
     }

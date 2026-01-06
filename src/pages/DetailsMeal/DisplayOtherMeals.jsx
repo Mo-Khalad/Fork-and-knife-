@@ -2,7 +2,6 @@ import React from "react";
 import { fetchMeals } from "../../util/Http";
 import { useQuery } from "@tanstack/react-query";
 import { DataShareContext } from "../../Store/DataShareContext";
-import { TransitionButton } from "../../Components/Ui/TransitionButton";
 import { useTranslation } from "react-i18next";
 import { CartContext } from "../../Store/CartContext";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
@@ -13,14 +12,17 @@ import { Link } from "react-router-dom";
 export const DisplayOtherMeals = () => {
   const { mealName } = DataShareContext();
   const { t } = useTranslation();
-  const { addItemToCartHandler , cartMeals } = CartContext();
+  const { addItemToCartHandler, cartMeals } = CartContext();
+
   const { data } = useQuery({
     queryKey: ["meal", mealName],
-    queryFn: () => fetchMeals({ mealName: mealName, method: "get_meals" }),
+    queryFn: () => fetchMeals({ mealName: mealName }),
     staleTime: Infinity,
   });
+
   const dataOtherMeals = data?.data?.recipes;
   const { handleSideCartDisplay } = ShowModelSideCart();
+
   const handleAddToCart = (mealData) => {
     successfullyDone(t("successfully Added"));
     addItemToCartHandler(mealData);
@@ -39,11 +41,11 @@ export const DisplayOtherMeals = () => {
             if (index < 4) {
               return (
                 <div
-                  key={index}
+                  key={dataOtherMeal.recipe_id}
                   className="bg-second-color second-font col-span-5 sm:col-span-4 md:col-span-2 main-shadow rounded-main-radius min-90"
                 >
                   <div>
-                    <Link to={`../DetailsMeal/${ dataOtherMeal.recipe_id}`}>
+                    <Link to={`../DetailsMeal/${dataOtherMeal.recipe_id}`}>
                       <img
                         src={dataOtherMeal.image_url}
                         alt={dataOtherMeal.title}

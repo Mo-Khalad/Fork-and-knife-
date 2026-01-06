@@ -2,13 +2,16 @@
 import axios from "axios";
 
 const baseServerUrl = import.meta.env.VITE_Base_API_URL 
-export const fetchMeals = async ({ method , mealName }) => { 
+
+export const fetchMeals = async ({ mealName }) => { 
   try {
-  const extension =  method === "get_meals" ? 'search?q' : "get?rId"
     const responsive = await axios(
-      `${baseServerUrl}${extension}=${mealName}`
+      `${baseServerUrl}search?q=${mealName}`
     ); 
-  return responsive;
+
+console.log(responsive);
+
+    return responsive;
 } catch(error) {  
     return error 
   }

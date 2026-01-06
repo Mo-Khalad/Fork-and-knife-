@@ -6,14 +6,14 @@ const { t } = useTranslation()
   return (
     <div className="mt-20 h-lvh grid justify-self-center content-center">
     <div className="container grid grid-cols-2">
-        <div className="grid ms-5 col-span-2 lg:col-span-1 h-40">
+        <div className="grid ms-5 mb-25 col-span-2 lg:col-span-1 h-40">
           <h1 className=" main-font text-center lg:mt-30 font-bold p-3 text-3xl animate__animated  animate__fadeInLeft">
            { t("Welcome Message") }
           </h1>
         </div>
 
         <div className="grid col-span-2 lg:col-span-1 animate__animated animate__fadeInRight">
-          <img className='place-content-center w-96' src='chicken.webp' alt="chicken"/>
+          <img className='place-content-center' src='chicken.webp' alt="chicken"/>
         </div>
     </div>
   </div>
