@@ -21,13 +21,10 @@ export const SomeMeals = () => {
     staleTime: Infinity,
   });
 
-  console.log(data);
-
   const handleAddToCart = (mealData) => {
     successfullyDone(t("successfully Added"));
     addItemToCartHandler(mealData);
     cartMeals.length === 0 && handleSideCartDisplay();
-
   };
 
   const dataSomeMeals = data?.data?.recipes;
@@ -43,7 +40,7 @@ export const SomeMeals = () => {
         {dataSomeMeals !== undefined &&
           dataSomeMeals.map((dataSomeMeal, index) => {
             if (index > 12) {
-             return <SwiperSlide key={dataSomeMeal.recipe_id}>
+             return <SwiperSlide key={dataSomeMeal.recipe_id} dir='ltr'>
                 <div className="bg-second-color second-font">
                   <Link to={`../DetailsMeal/${dataSomeMeal.recipe_id}`}>
                     <img
