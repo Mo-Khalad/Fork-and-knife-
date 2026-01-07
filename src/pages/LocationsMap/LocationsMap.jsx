@@ -3,7 +3,6 @@ import { LocationMarker } from "../../Components/LocationMarker";
 import { Map } from "../../Components/Map";
 import { useTranslation } from "react-i18next";
 import '../../assets/images/chef1.webp'
-import { SideCart } from "../Cart/SideCart";
 import { useNetwork } from '../../hooks/useNetwork';
 import { NetworkError } from '../Error/NetworkError';
 
@@ -36,7 +35,6 @@ export const LocationsMap = () => {
         <Map position={position} zoom={9}>
          <LocationMarker areas={areas}/> 
         </Map>
-        <SideCart/>
       </div>
       : <NetworkError/>
     }

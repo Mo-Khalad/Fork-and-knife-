@@ -12,22 +12,22 @@ import { ShowModelSideCart } from "../../Store/ShowModelSideCart";
 
 export const SomeMeals = () => {
   const { t } = useTranslation();
-  const { addItemToCartHandler , cartMeals } = CartContext();
+  const { addItemToCartHandler, cartMeals } = CartContext();
   const { handleSideCartDisplay } = ShowModelSideCart();
 
   const { data } = useQuery({
     queryKey: ["meal", "pizza"],
-    queryFn: () => fetchMeals({ mealName: "pizza"}),
+    queryFn: () => fetchMeals({ mealName: "pizza" }),
     staleTime: Infinity,
   });
+
+  const dataSomeMeals = data?.data?.recipes;
 
   const handleAddToCart = (mealData) => {
     successfullyDone(t("successfully Added"));
     addItemToCartHandler(mealData);
     cartMeals.length === 0 && handleSideCartDisplay();
   };
-
-  const dataSomeMeals = data?.data?.recipes;
 
   return (
     <div className="h-150">
@@ -36,42 +36,45 @@ export const SomeMeals = () => {
         navigation={true}
         slidesPerView={4}
         spaceBetween={20}
+        dir={'ltr'}
       >
         {dataSomeMeals !== undefined &&
           dataSomeMeals.map((dataSomeMeal, index) => {
             if (index > 12) {
-             return <SwiperSlide key={dataSomeMeal.recipe_id} dir='ltr'>
-                <div className="bg-second-color second-font">
-                  <Link to={`../DetailsMeal/${dataSomeMeal.recipe_id}`}>
-                    <img
-                      src={dataSomeMeal.image_url}
-                      alt={dataSomeMeal.title}
-                      className="min-h-50 h-60 w-full"
-                    />
-                  </Link>
-                  <div className="p-4">
-                    <h2 className="font-medium m-1 line-clamp-1">
-                      {dataSomeMeal.title}
-                    </h2>
-                    <p className="p-3">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Tenetur, sed.
-                    </p>
+              return (
+                <SwiperSlide key={dataSomeMeal.recipe_id}>
+                  <div className="bg-second-color second-font">
+                    <Link to={`../DetailsMeal/${dataSomeMeal.recipe_id}`}>
+                      <img
+                        src={dataSomeMeal.image_url}
+                        alt={dataSomeMeal.title}
+                        className="min-h-50 h-60 w-full"
+                      />
+                    </Link>
+                    <div className="p-4">
+                      <h2 className="font-medium m-1 line-clamp-1">
+                        {dataSomeMeal.title}
+                      </h2>
+                      <p className="p-3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Tenetur, sed.
+                      </p>
 
-                    <ButtonMain
-                      onClick={() => handleAddToCart(dataSomeMeal)}
-                      className="w-42"
-                    >
-                      {t("add")}
-                    </ButtonMain>
+                      <ButtonMain
+                        onClick={() => handleAddToCart(dataSomeMeal)}
+                        className="w-42"
+                      >
+                        {t("add")}
+                      </ButtonMain>
 
-                    <span className="ms-1">
-                      {" "}
-                      {dataSomeMeal.social_rank.toFixed(2)}${" "}
-                    </span>
+                      <span className="ms-1">
+                        {" "}
+                        {dataSomeMeal.social_rank.toFixed(2)}${" "}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
+                </SwiperSlide>
+              );
             }
           })}
       </Slider>

@@ -8,16 +8,15 @@ import { FindMeal } from "./FindMeal";
 import menu from "../../assets/images/menu.webp";
 import { Loading } from "../../Components/Loading";
 import { Model } from "../../Components/Ui/Model";
-import { SideCart } from "../Cart/SideCart";
-import { useNetwork } from '../../hooks/useNetwork';
-import { NetworkError } from '../Error/NetworkError';
+import { useNetwork } from "../../hooks/useNetwork";
+import { NetworkError } from "../Error/NetworkError";
 
 export const Menu = () => {
   const [meal, setMeal] = useState(mealsNames);
   const [show, setShow] = useState(false);
   const [searchElement, setSearchElement] = useState("");
   const { mealName } = DataShareContext();
-  const isOnline = useNetwork() 
+  const isOnline = useNetwork();
 
   const handleMealsMenuDisplay = () => {
     setShow(true);
@@ -42,59 +41,59 @@ export const Menu = () => {
 
   return (
     <>
-    {isOnline ? 
-    <>
-      {isFetching ? (
-        <Loading />
-      ) : (
-        <div className="p-5 mb-3 mt-15 min-h-lvh">
-          <img
-            className={`cursor-pointer fixed left-5 ${
-              show ? "hidden" : "block"
-            }`}
-            width={50}
-            src={menu}
-            alt="menu"
-            onClick={handleMealsMenuDisplay}
-          />
-          <div className="grid grid-cols-1 w-full">
-            {
-              <Model open={show}>
-                <FindMeal
-                  meal={meal}
-                  handleOnSearch={handleOnSearch}
-                  handleMealsMenuHide={handleMealsMenuHide}
-                  mealName={mealName}
-                  setMeal={setMeal}
-                  mealsNames={mealsNames}
-                  searchElement={searchElement}
-                  setSearchElement={setSearchElement}
-                />
-              </Model>
-            }
-
-            <div className="grid col-span-2 justify-self-center sm:col-span-7 md:col-span-8 mt-5">
-              <h2 className="text-center text-5xl text-main-color main-font mb-20">
-                {mealName}
-              </h2>
-              <div className="grid grid-cols-1 p-10 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 background-details">
-                {data !== undefined &&
-                  data?.data?.recipes.map((mealData, index) => (
-                    <DisplayMeals
-                      mealData={mealData}
-                      key={mealData.recipe_id}
-                      index={index}
+      {isOnline ? (
+        <>
+          {isFetching ? (
+            <Loading />
+          ) : (
+            <div className="p-5 mb-3 mt-15 min-h-lvh">
+              <img
+                className={`cursor-pointer fixed left-5 ${
+                  show ? "hidden" : "block"
+                }`}
+                width={50}
+                src={menu}
+                alt="menu"
+                onClick={handleMealsMenuDisplay}
+              />
+              <div className="grid grid-cols-1 w-full">
+                {
+                  <Model open={show}>
+                    <FindMeal
+                      meal={meal}
+                      handleOnSearch={handleOnSearch}
+                      handleMealsMenuHide={handleMealsMenuHide}
+                      mealName={mealName}
+                      setMeal={setMeal}
+                      mealsNames={mealsNames}
+                      searchElement={searchElement}
+                      setSearchElement={setSearchElement}
                     />
-                  ))}
+                  </Model>
+                }
+
+                <div className="grid col-span-2 justify-self-center sm:col-span-7 md:col-span-8 mt-5">
+                  <h2 className="text-center text-5xl text-main-color main-font mb-20">
+                    {mealName}
+                  </h2>
+                  <div className="grid grid-cols-1 p-10 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 background-details">
+                    {data !== undefined &&
+                      data?.data?.recipes.map((mealData, index) => (
+                        <DisplayMeals
+                          mealData={mealData}
+                          key={mealData.recipe_id}
+                          index={index}
+                        />
+                      ))}
+                  </div>
+                </div>
               </div>
-             <SideCart/> 
             </div>
-          </div>
-        </div>
+          )}
+        </>
+      ) : (
+        <NetworkError />
       )}
-    </>  
-    : <NetworkError/>}
-     
     </>
   );
 };

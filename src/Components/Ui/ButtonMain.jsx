@@ -1,7 +1,6 @@
 import React from "react";
 
 export const ButtonMain = ({ children, onClick, className }) => {
-
   return (
     <button
       onClick={onClick}

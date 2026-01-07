@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Marker , useMapEvents } from "react-leaflet";
+import { Marker, useMapEvents } from "react-leaflet";
 
 export const PickLocation = ({ setPickLocation, pickLocation }) => {
   const [position, setPosition] = useState();
@@ -10,13 +10,15 @@ export const PickLocation = ({ setPickLocation, pickLocation }) => {
       setPickLocation(e.latlng);
     },
   });
-  
-const state = ( ( position === undefined)  && (pickLocation.lat !== undefined )&&( pickLocation.lng !== undefined)) 
- 
-return (
 
-  state ? <Marker
-        position={[ pickLocation?.lat , pickLocation?.lng] 
-        } /> : <Marker position={position} />
-      )
+  const state =
+    position === undefined &&
+    pickLocation.lat !== undefined &&
+    pickLocation.lng !== undefined;
+
+  return state ? (
+    <Marker position={[pickLocation?.lat, pickLocation?.lng]} />
+  ) : (
+    <Marker position={position} />
+  );
 };

@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import notFound from "../../assets/images/404-error.webp";
 import { TransitionButton } from "../../Components/Ui/TransitionButton";
+import { ShowModelSideCart } from "../../Store/ShowModelSideCart";
+
 export const NotFound = () => {
+  const { handleSideCartHide } = ShowModelSideCart()
+
+  useEffect(()=>{
+    handleSideCartHide()
+  } , [handleSideCartHide])
+
   return (
     <>
       <div className="grid justify-items-center ">
-        <img src={notFound} alt="error" className="mt-15"/>
+        <img src={notFound} alt="error" className="mt-15" />
         <p className="text-main-color text-center text-2xl font-medium main-font p-1 m-2">
           File not found
         </p>

@@ -11,13 +11,13 @@ import {
 } from "../../Logic/Logic";
 import { ShowModelSideCart } from "../../Store/ShowModelSideCart";
 import { TransitionButton } from "../../Components/Ui/TransitionButton";
-import { LanguageChangeContext } from "../../Store/LanguageChangeContext"
+import { LanguageChangeContext } from "../../Store/LanguageChangeContext";
 
 export const SideCart = () => {
   const { t } = useTranslation();
   const { showSideCart, handleSideCartHide } = ShowModelSideCart();
   const { language } = LanguageChangeContext();
-  const dir = language === 'en' ? 'ltr' : 'rtl' ;
+  const dir = language === "en" ? "ltr" : "rtl";
   const {
     addItemToCartHandler,
     decrementItemToCartHandler,
@@ -30,7 +30,6 @@ export const SideCart = () => {
     removeItemToCartHandler(id);
     cartMeals.length === 1 ? handleSideCartHide() : "";
   };
-  
 
   return (
     <>
@@ -100,29 +99,38 @@ export const SideCart = () => {
             </div>
 
             <div className="w-full bg-main-color place-content-center">
-
-            <div  dir={dir} className="grid text-3xl grid-cols-9 text-center m-auto font-bold text-second-color second-font my-2">
-               <span className='grid col-span-4 text-center bg-second-colo ms-5'>
+              <div
+                dir={dir}
+                className="grid text-3xl grid-cols-9 text-center m-auto font-bold text-second-color second-font my-2"
+              >
+                <span className="grid col-span-4 text-center bg-second-colo ms-5">
                   {t("Total Price")}
                 </span>
                 <span className="mx-2 grid col-span-1"> : </span>
-                   <span className='grid col-span-2'> {totalPriceProducts(cartMeals)}$ </span>
-
+                <span className="grid col-span-2">
+                  {" "}
+                  {totalPriceProducts(cartMeals)}${" "}
+                </span>
               </div>
- 
 
               <p className="text-center font-extralight text-1xl text-second-color">
                 {t("includes")}
               </p>
               <hr className="h-0.5 m-5 bg-second-color" />
-              <div dir={dir} className="grid grid-cols-9 text-center font-bold text-second-color second-font my-2">
-              <span className='grid col-span-4 text-center'>
+              <div
+                dir={dir}
+                className="grid grid-cols-9 text-center font-bold text-second-color second-font my-2"
+              >
+                <span className="grid col-span-4 text-center">
                   {t("Total Meals Quantity")}
                 </span>
                 <span className="mx-2 grid col-span-1"> : </span>
-                <span className='grid col-span-1'> {totalCartMeals(cartMeals)} </span>
+                <span className="grid col-span-1">
+                  {" "}
+                  {totalCartMeals(cartMeals)}{" "}
+                </span>
               </div>
-           
+
               <TransitionButton
                 path={"../cart"}
                 className={"w-88 m-2 btn-showCart bg-second-color"}

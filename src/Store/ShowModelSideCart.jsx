@@ -5,4 +5,5 @@ export const ShowModelSideCart = create(
     showSideCart: true ,
     handleSideCartDisplay:()=>set(()=>({ showSideCart : true})),
     handleSideCartHide:()=>set(()=>({ showSideCart : false}))
+   
 }))
