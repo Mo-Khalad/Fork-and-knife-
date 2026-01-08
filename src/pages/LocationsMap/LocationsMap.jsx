@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LocationMarker } from "../../Components/LocationMarker";
 import { Map } from "../../Components/Map";
 import { useTranslation } from "react-i18next";
-import '../../assets/images/chef1.webp'
-import { useNetwork } from '../../hooks/useNetwork';
-import { NetworkError } from '../Error/NetworkError';
+import "../../assets/images/chef1.webp";
+import { useNetwork } from "../../hooks/useNetwork";
+import { NetworkError } from "../Error/NetworkError";
 
 export const LocationsMap = () => {
-  const { t } = useTranslation()
-  const isOnline = useNetwork()
+  const { t } = useTranslation();
+  const isOnline = useNetwork();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const areas = [
     { area: [30.0646, 31.4882], restaurantName: "October" },
     { area: [29.9611, 30.9296], restaurantName: "Rehab" },
@@ -16,29 +20,30 @@ export const LocationsMap = () => {
     { area: [30.0467, 31.2347], restaurantName: "Downtown" },
   ];
   const position = [30.0467, 31.2347];
-  
+
   return (
-    <> { 
-      isOnline ?  
-      <div className="p-7 grid grid-cols-1 lg:grid-cols-2 gap-4 mt-15">
-        <div>
-           {areas.map(({ restaurantName }, index) => (
-          <div key={index}>
-            <h1 className="font-black text-2xl p-4 main-font">
-              {t(restaurantName)}
-            </h1>
-            <p className="p-2 ms-5">{t('Street')}</p>
+    <>
+      {" "}
+      {isOnline ? (
+        <div className="p-7 grid grid-cols-1 lg:grid-cols-2 gap-4 mt-15">
+          <div>
+            {areas.map(({ restaurantName }, index) => (
+              <div key={index}>
+                <h1 className="font-black text-2xl p-4 main-font">
+                  {t(restaurantName)}
+                </h1>
+                <p className="p-2 ms-5">{t("Street")}</p>
+              </div>
+            ))}
           </div>
-           ))}
+
+          <Map position={position} zoom={9}>
+            <LocationMarker areas={areas} />
+          </Map>
         </div>
-
-        <Map position={position} zoom={9}>
-         <LocationMarker areas={areas}/> 
-        </Map>
-      </div>
-      : <NetworkError/>
-    }
+      ) : (
+        <NetworkError />
+      )}
     </>
-    )
-
+  );
 };

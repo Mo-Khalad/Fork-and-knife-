@@ -22,6 +22,7 @@ export const MealsSlider = () => {
           modifier: 1,
           slideShadows: true,
         }}
+        dir='ltr'
         pagination={false}
         modules={[EffectCoverflow, Pagination]}
        

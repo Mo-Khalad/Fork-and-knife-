@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { mealsNames } from "./mealsNames";
 import { DisplayMeals } from "./DisplayMeals";
 import { useQuery } from "@tanstack/react-query";
@@ -17,7 +17,9 @@ export const Menu = () => {
   const [searchElement, setSearchElement] = useState("");
   const { mealName } = DataShareContext();
   const isOnline = useNetwork();
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const handleMealsMenuDisplay = () => {
     setShow(true);
   };

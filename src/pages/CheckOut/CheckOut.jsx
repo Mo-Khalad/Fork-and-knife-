@@ -35,9 +35,11 @@ export const CheckOut = () => {
         }
       );
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     navigate("../");
     removeAllItemsToCartHandler();
     successfullyDone(t("successfully"));
@@ -52,20 +54,6 @@ export const CheckOut = () => {
               <h2 className="text-4xl main-font text-main-color text-center">
                 {t("Check Out")}
               </h2>
-
-              <div className="w-full">
-                <h2 className="font-bold text-2xl text-gray-900 mt-5">
-                  {t("Street address")}
-                </h2>
-                <p className="mt-5">
-                  {t("lat")} :{" "}
-                  {pickLocation?.lat !== 30.0444 ? pickLocation?.lat : 30.0444}
-                </p>
-                <p className="mt-2">
-                  {t("lng")} :{" "}
-                  {pickLocation?.lng !== 31.2357 ? pickLocation?.lng : 31.2357}
-                </p>
-              </div>
 
               <div className="w-full gap-10">
                 <Map
@@ -82,7 +70,7 @@ export const CheckOut = () => {
               </div>
 
               <form
-                onClick={handleSubmit}
+                onSubmit={handleSubmit}
                 className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"
               >
                 <div className="sm:col-span-3">
@@ -90,7 +78,7 @@ export const CheckOut = () => {
                     htmlFor="first-name"
                     className="block text-sm/6 font-medium text-gray-900"
                   >
-                    {t("First name")}
+                    {t("name")}
                   </label>
                   <div className="mt-2">
                     <input
@@ -98,26 +86,11 @@ export const CheckOut = () => {
                       type="text"
                       name="first-name"
                       className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
+                      required
                     />
                   </div>
                 </div>
                 <div className="sm:col-span-3">
-                  <label
-                    htmlFor="Last-name"
-                    className="block text-sm/6 font-medium text-gray-900"
-                  >
-                    {t("Last name")}
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      id="last-name"
-                      type="text"
-                      name="last-name"
-                      className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
-                    />
-                  </div>
-                </div>
-                <div className="sm:col-span-4">
                   <label
                     htmlFor="email"
                     className="block text-sm/6 font-medium text-gray-900"
@@ -129,6 +102,7 @@ export const CheckOut = () => {
                       id="email"
                       type="email"
                       name="email"
+                      required
                       className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
                     />
                   </div>
@@ -142,6 +116,7 @@ export const CheckOut = () => {
                   </label>
                   <div className="mt-2 grid grid-cols-1">
                     <select
+                      required
                       id="country"
                       name="country"
                       className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
@@ -162,7 +137,7 @@ export const CheckOut = () => {
                   </div>
                 </div>
 
-                <div className="sm:col-span-2 sm:col-start-1">
+                <div className="sm:col-span-3 sm:col-start-1">
                   <label
                     htmlFor="city"
                     className="block text-sm/6 font-medium text-gray-900"
@@ -174,52 +149,38 @@ export const CheckOut = () => {
                       id="city"
                       type="text"
                       name="city"
+                      required
                       className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
                     />
                   </div>
                 </div>
 
-                <div className="sm:col-span-2">
+                <div className="w-full  sm:col-span-3">
                   <label
-                    htmlFor="region"
+                    htmlFor="phone"
                     className="block text-sm/6 font-medium text-gray-900"
                   >
-                    {t("First phone")}
+                    {t("phone")}
                   </label>
                   <div className="mt-2">
                     <input
-                      id="region"
+                      required
+                      id="phone"
                       type="text"
-                      name="region"
+                      name="phone"
                       className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
                     />
                   </div>
                 </div>
 
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="postal-code"
-                    className="block text-sm/6 font-medium text-gray-900"
-                  >
-                    {t("Last phone")}
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      id="postal-code"
-                      type="text"
-                      name="postal-code"
-                      className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-main-color sm:text-sm/6"
-                    />
-                  </div>
-                </div>
                 <button
-                  type="button"
                   className={
-                    "w-40 bg-main-color text-second-color rounded-main-radius px-4 py-2"
+                    "w-40 bg-main-color mt-5 h-10 text-second-color rounded-main-radius px-4 py-2 "
                   }
                 >
                   {t("Check Out")}
                 </button>
+
               </form>
             </div>
           </div>

@@ -36,13 +36,15 @@ export const SomeMeals = () => {
         navigation={true}
         slidesPerView={4}
         spaceBetween={20}
-        dir={'ltr'}
+        dir={"ltr"}
       >
         {dataSomeMeals !== undefined &&
           dataSomeMeals.map((dataSomeMeal, index) => {
             if (index > 12) {
               return (
                 <SwiperSlide key={dataSomeMeal.recipe_id}>
+                  <div className="absolute top-0 right-0 bottom-0 left-0 opacity-30 h-60 hover:cursor-pointer hover:bg-main-color transition duration-700"></div>
+
                   <div className="bg-second-color second-font">
                     <Link to={`../DetailsMeal/${dataSomeMeal.recipe_id}`}>
                       <img

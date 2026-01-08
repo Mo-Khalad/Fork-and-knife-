@@ -14,7 +14,7 @@ import { TransitionButton } from "../../Components/Ui/TransitionButton";
 import { ShowModelSideCart } from "../../Store/ShowModelSideCart";
 export const Cart = () => {
   const { removeAllItemsToCartHandler, cartMeals } = CartContext();
-  const { handleSideCartHide } = ShowModelSideCart()
+  const { handleSideCartHide } = ShowModelSideCart();
   const { t } = useTranslation();
   const isOnline = useNetwork();
 
@@ -23,9 +23,13 @@ export const Cart = () => {
     removeAllItemsToCartHandler();
   };
 
-useEffect(()=>{
-  handleSideCartHide()
-} ,[handleSideCartHide])
+  useEffect(() => {
+    handleSideCartHide();
+  }, [handleSideCartHide]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import googleMapIcon from "../assets/images/google-maps.webp";
+import gps from '../assets/images/gps.webp'
 export const LocationMarker = ({ areas }) => {
   return (
     <>
@@ -19,8 +19,8 @@ export const LocationMarker = ({ areas }) => {
   );
 };
 let defaultIcon = L.icon({
-  iconUrl: googleMapIcon,
-  iconSize: [32, 32],
+  iconUrl: gps ,
+  iconSize: [ 40 , 40],
 });
 
 L.Marker.prototype.options.icon = defaultIcon;

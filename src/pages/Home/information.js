@@ -36,13 +36,12 @@ export const informationChefs = [
     { name: "mohmed", image: chef6, information_chef },
 ];
 //information locations
-const Street ="Street";
 
 export const informationLocation = [
-    { name: "October", image: October, Street },
-    { name: "Sheikh Zayed", image: Sheikh_Zayed , Street },
-    { name: "Rehab", image: Rehab, Street },
-    { name: "Downtown", image: Downtown, Street },
+    { name: "October", image: October},
+    { name: "Sheikh Zayed", image: Sheikh_Zayed },
+    { name: "Rehab", image: Rehab },
+    { name: "Downtown", image: Downtown },
 ];
 
 // sliderImages

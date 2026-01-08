@@ -8,7 +8,7 @@ export const Chefs = () => {
   const { t } = useTranslation();
   useEffect(() => {
     Aos.init({
-      duration: 600,
+      duration: 900,
       easing: "ease-in-out",
       once: false,
       mirror: true,
@@ -30,7 +30,7 @@ export const Chefs = () => {
               >
                 <img src={image} alt="chef" className="min-h-65 w-full h-65" />
                 <h3 className="font-extrabold text-1xl p-2">
-                  {t("names")} : {t(name)}
+                  {t(name)}
                 </h3>
                 <p className="font-sans">{t(information_chef)}</p>
               </div>

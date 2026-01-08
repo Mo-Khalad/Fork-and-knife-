@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { ButtonMain } from "../../Components/Ui/ButtonMain";
 import { CartContext } from "../../Store/CartContext";
@@ -11,12 +11,18 @@ import { useTranslation } from "react-i18next";
 import { useNetwork } from "../../hooks/useNetwork";
 import { NetworkError } from "../Error/NetworkError";
 
+
 export const DetailsMeal = () => {
   const { addItemToCartHandler } = CartContext();
   const { dataShare } = DataShareContext();
   const { id } = useParams();
   const { t } = useTranslation();
   const isOnline = useNetwork();
+
+  useEffect( ()=>{
+    window.scrollTo( {top :0 , behavior:"smooth" })
+  } , [])
+
   const { data } = useQuery({
     queryKey: [" detailMeal ", id],
     queryFn: () => fetchDetailsMeal(id),

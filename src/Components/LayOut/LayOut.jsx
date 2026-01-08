@@ -5,6 +5,8 @@ import { Outlet } from "react-router-dom";
 import { SideCart } from "../../pages/Cart/SideCart";
 
 export const LayOut = () => {
+ 
+  
   return (
     <>
       <Navbar/>

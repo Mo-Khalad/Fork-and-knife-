@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import October from "../../assets/images/October.webp";
 import { useTranslation } from "react-i18next";
 import { useNetwork } from "../../hooks/useNetwork";
@@ -6,6 +6,10 @@ import { NetworkError } from "../Error/NetworkError";
 export const About = () => {
   const { t } = useTranslation();
   const isOnline = useNetwork();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <>

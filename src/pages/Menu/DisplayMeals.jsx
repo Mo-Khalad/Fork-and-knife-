@@ -34,6 +34,7 @@ export const DisplayMeals = ({ mealData, index }) => {
       className="second-font bg-second-color main-shadow rounded-main-radius min-90 mt-10 sm:mt-0 max-w-64"
       data-aos={`${index >= 10 ? "zoom-out" : "zoom-out-right"}`}
     >
+      <div className="absolute top-0 right-0 bottom-0 left-0 opacity-30 h-50 hover:cursor-pointer hover:bg-main-color transition duration-700"></div>
       <Link to={`../DetailsMeal/${id}`}>
         <img src={image_url} alt={title} className="min-h-50 h-50 w-full" />
       </Link>
