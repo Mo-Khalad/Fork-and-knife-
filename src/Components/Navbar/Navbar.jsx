@@ -6,8 +6,6 @@ import { useTranslation } from "react-i18next";
 import { successfullyDone, totalCartMeals } from "../../Logic/Logic";
 import { CartContext } from "../../Store/CartContext";
 import { ShowModelSideCart } from "../../Store/ShowModelSideCart";
-import ar from "../../assets/images/ar.png";
-import eng from "../../assets/images/eng.png";
 
 export const Navbar = () => {
   const { language, handleLanguageChange } = LanguageChangeContext();
@@ -20,17 +18,10 @@ export const Navbar = () => {
     setDisplaySideNavbar(!displaySideNavbar);
   };
 
-  /*
-     <button
-              onClick={() => handleLanguageChange(language, i18n)}
-              className="border border-second-color second-font max-w-20 w-24 text-second-color p-1 ms-3"
-            >
-              {language === "en" ? "ar" : "en"}
-            </button>
-  */
   return (
-    <nav className="bg-main-color fixed p-3 w-full z-99999999 top-0">
-      <div className="container">
+
+    <header className="bg-main-color fixed p-3 w-full z-99999999 top-0">
+      <nav className="container">
         <div className="flex justify-between place-content-center">
           <div>
             <div className="hidden md:flex items-center cursor-pointer text-gray-200 gap-6 ">
@@ -88,7 +79,7 @@ export const Navbar = () => {
             )}
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
