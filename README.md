@@ -1,16 +1,16 @@
-# React + Vite
+Zixes - React Movie App
+Personal Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Zixes is a responsive and feature-rich movie app built using React.js. It delivers a dynamic user experience by fetching real-time data from a movie API and offering a sleek interface for movie lovers.
 
-Currently, two official plugins are available:
+Tools
+React Js, Context, Bootstrap, Css, Html, External Api (Movies), Route Api (Auth)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Key Features
+Fully responsive design for desktop, tablet, and mobile.
+Real-time data using a public movie API.
+Browse movies by category or search by name.
+View detailed movie pages with descriptions, ratings, release dates, and reviews.
+Interactive and smooth navigation throughout the app.
+Modern React components and UI plugins for enhanced functionality.
+User-friendly layout that makes browsing simple and enjoyable.
